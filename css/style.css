@@ -1,0 +1,39 @@
+*{
+    font-family: Raleway, sans-serif;
+    color: black;
+    font-size: 16px;
+}
+a{
+    color: black;
+    text-decoration: none;
+}
+a:hover{
+    color: black;
+    text-decoration: none;
+}
+
+.logo-img{
+    margin-right: 11px;;
+}
+
+.logo-link{
+    text-decoration: none;
+    color: black;
+}
+.logo-link:hover {
+    color: black;
+    text-decoration: none;
+}
+
+.logo-text{
+    letter-spacing: 0.1em;
+}
+
+.nav-link {
+  color: black !important;
+  text-decoration: none;
+}
+
+.phone-img{
+    margin-top: 0.3em;
+}
