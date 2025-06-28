@@ -14,7 +14,7 @@
 <body>
     <header class="header sticky-top">
         <nav class="navbar navbar-expand-lg">
-            <div class="container d-flex justify-content-between align-items-center">
+            <div class="container d-flex justify-content-start align-items-center">
             
                 <!-- Логотип -->
                 <a href="/" class="navbar-brand d-flex align-items-center">
@@ -23,7 +23,7 @@
                 </a>
 
                 <!-- Навигация -->
-                <ul class="navbar-nav d-flex flex-row gap-3">
+                <ul class="navbar-nav d-flex flex-row gap-4">
                     <li class="nav-item">
                     <a class="nav-link main-page" href="#">Главная</a>
                     </li>
@@ -39,7 +39,7 @@
                 </ul>
 
             
-                <div class="d-flex align-items-center">
+                <div class="header-right d-flex align-items-center ms-auto">
                     <img src="img/phone.svg" alt="" class="phone-img">
                     <a href="tel:+74958235412" class="phone-link ms-2">+7 (495) 823-54-12</a>
                     <a href="#" class="cart-link ms-5">
@@ -51,7 +51,76 @@
 
         </nav>
     </header>
+    <div class="main-wrapper">
+        <main class="main">
+            <div class="container">
+
+                <div class="row">
+                    <div class="col-6 left-section-hero d-flex flex-column gap-3">
+                        <div class="slide active">
+                            <h1 class="hero-title">
+                                Новые поступления <br>
+                                в этом сезоне
+                            </h1>
+                            <p class="hero-text">
+                                Утонченные сочетания и бархатные<br> оттенки - вот то, что вы искали в этом <br> сезоне. Время исследовать.
+                            </p>
+                        </div>
+                        <div class="slide">
+                            <h1 class="hero-title">
+                                Что-то новенькое.<br> Мы заждались тебя.
+                            </h1>
+                            <p class="hero-text">
+                                Надоело искать себя в сером городе?<br> Настало время новых идей, свежих <br> красок и вдохновения с Womazing!
+                            </p>
+                        </div>
+
+                        <div class="slide">
+                            <h1 class="hero-title">
+                                Включай новый <br> сезон с WOMAZING
+                            </h1>
+                            <p class="hero-text">
+                                Мы обновили ассортимент -<br> легендарные коллекции и новинки от<br> отечественных дизайнеров
+                            </p>
+                        </div>
+                        <div class="d-flex flex-column align-items-end mx-auto" style="max-width: 200px;">
+                            <div class="buttons d-flex">
+                                <a href="#" class="btn down-arrow-button">
+                                    <img src="img/down-arrow.svg" alt="Down Arrow" class="down-arrow-icon">
+                                </a>
+                                <a href="#" class="btn shop-button">
+                                    Открыть магазин
+                                </a>
+                            </div>
+
+                            <div class="slider-controls d-flex gap-2">
+                                <span class="slider-bar active"></span>
+                                <span class="slider-bar"></span>
+                                <span class="slider-bar"></span>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="col-6 right-section-hero d-flex">
+                        <div class="right-section-hero__image_container">
+                            <img src="img/help_img1.png" alt="Hero Image 1" class="help-img img-fluid">
+                        </div>
+                        <div class="right-section-hero__image_container">
+                            <img src="img/women_main_img.png" alt="Hero Image 2" class="main-img img-fluid">
+                        </div>
+                        <div class="right-section-hero__image_container">
+                            <img src="img/help_img2.png" alt="Hero Image 3" class="help-img img-fluid">
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </main>
+    </div>
 
     <script src="js/bootstrap.bundle.min.js"></script>
+    <script src="js/slider.js"></script>
 </body>
 </html>
