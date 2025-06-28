@@ -2,16 +2,26 @@ const slides = document.querySelectorAll('.slide');
 const sliderBars = document.querySelectorAll('.slider-bar');
 
 let currentIndex = 0;
-let interval = 5000;
+const interval = 5000;
 let lastTime = performance.now();
 
 function updateSlider(index) {
   slides.forEach((slide, i) => {
     slide.classList.toggle('active', i === index);
   });
+
   sliderBars.forEach((bar, i) => {
-    bar.classList.toggle('active', i === index);
+    bar.classList.remove('active');
+    bar.style.setProperty('--interval', `${interval}ms`);
+
+    // Принудительно сбросить анимацию
+    void bar.offsetWidth;
+
+    if (i === index) {
+      bar.classList.add('active');
+    }
   });
+
   currentIndex = index;
 }
 
