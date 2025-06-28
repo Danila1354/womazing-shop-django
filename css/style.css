@@ -50,11 +50,28 @@ a:hover{
   color: black !important;
   text-decoration: none;
 }
-
-.phone-img{
-    margin-top: 0.3em;
+.icon-wrapper {
+    cursor: pointer;
+    display: flex;
+    width: 27px;
+    height: 27px;
+    justify-content: center;
+    align-items: center;
+    transition: background 0.5s ease; /* перемещено сюда */
 }
 
+.icon-wrapper .icon-part {
+    fill: #6E9C9F;
+    transition: fill 0.5s ease;
+}
+
+.icon-wrapper:hover .icon-part {
+    fill: white;
+}
+
+.icon-wrapper:hover {
+    background: #6E9C9F;
+}
 .main{
     height: calc(100vh - 56px);
 }
