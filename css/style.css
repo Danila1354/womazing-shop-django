@@ -50,11 +50,28 @@ a:hover{
   color: black !important;
   text-decoration: none;
 }
-
-.phone-img{
-    margin-top: 0.3em;
+.icon-wrapper {
+    cursor: pointer;
+    display: flex;
+    width: 27px;
+    height: 27px;
+    justify-content: center;
+    align-items: center;
+    transition: background 0.5s ease; /* перемещено сюда */
 }
 
+.icon-wrapper .icon-part {
+    fill: #6E9C9F;
+    transition: fill 0.5s ease;
+}
+
+.icon-wrapper:hover .icon-part {
+    fill: white;
+}
+
+.icon-wrapper:hover {
+    background: #6E9C9F;
+}
 .main{
     height: calc(100vh - 56px);
 }
@@ -144,20 +161,37 @@ a:hover{
     transition: 0.3s;
 }
 
-
 .slider-bar {
-  position: relative;
-  background: #D1D1D1;
   width: 30px;
-  height: 4px;
+  height: 5px;
+  background-color: #D1D1D1; /* Цвет неактивной полоски */
+  border-radius: 3px;
   cursor: pointer;
+  position: relative;
   overflow: hidden;
-  border-radius: 2px;
 }
 
+.slider-bar::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 0;
+  height: 100%;
+  background-color: #000;
+}
 
-.slider-bar.active {
-    background: #000;
+.slider-bar.active::before {
+  animation: sliderProgress var(--interval) linear forwards;
+}
+
+@keyframes sliderProgress {
+  0% {
+    width: 0%;
+  }
+  100% {
+    width: 100%;
+  }
 }
 
 
