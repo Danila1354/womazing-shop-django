@@ -73,6 +73,8 @@ a:hover{
 }
 .main{
     height: calc(100vh - 56px);
+    max-height: 800px;
+    overflow: hidden;
 }
 
 .header,
@@ -200,46 +202,52 @@ a:hover{
     margin-left: 40%;
 }
 
-
 .right-section-hero {
     position: relative;
-    height: calc(100vh - 56px);;
+    height: calc(100vh - 56px);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-height: 800px;
 }
-
 .right-section-hero__image_container {
     position: absolute;
-    overflow:hidden;
+    display: block;
 }
 
 
-
-.right-section-hero__image_container:nth-child(1) {
-    max-width: 190px;
-    max-height: 318px;
-    bottom: 0; 
-    left: 3%; 
-    z-index: 1;
-}
-
-.right-section-hero__image_container:nth-child(2) {
-    top: 5%;
+/* Основное изображение */
+.right-section-hero__image_container--main {    
+    z-index: 2;
     right: 0;
-    max-width:410px;
-    max-height:646px;
-    z-index: 0;
+    top : 2%;
+    height: auto;
+    width: auto;
 }
 
-.right-section-hero__image_container:nth-child(3) {
-    max-width: 197px;
-    max-height: 197px;
-    top: 20%;
-    right: -20%;
-    z-index: 1;
+/* Нижнее левое изображение */
+.right-section-hero__image_container--bottom {
+    z-index: 3;
+    bottom: 0; 
+    left: 25%; 
+    transform: translateX(-50%);
 }
 
+/* Верхнее правое изображение */
+.right-section-hero__image_container--top {
+    z-index: 3;
+    top: 15%; 
+    right: 0;
+    transform: translateX(50%);
+}
 
 .right-section-hero__image_container img {
     transition: transform 0.5s ease;
+    width: 100%;
+    height: auto;
+    max-height: 100%;
+    display: block;
+    object-fit: cover;
 }
 
 .right-section-hero__image_container:hover img {
@@ -247,7 +255,7 @@ a:hover{
 }
 
 
-.new-collection__section {
+.new-collection {
     padding-top: 7rem;
 }
 
@@ -295,10 +303,13 @@ a:hover{
     cursor: pointer;
 }
 
+.shop-item__link--image{
+    display: block;
+}
 .shop-item__image {
   transition: all 0.5s ease; 
 }
-.shop-item__image-container::before {
+.shop-item__link--image::before {
   content: '';
   position: absolute;
   top: 0;
@@ -323,19 +334,49 @@ a:hover{
   z-index: 2;
 }
 
-.shop-item__image-container:hover .shop-item__image {
+.shop-item__link--image:hover .shop-item__image {
   transform: scale(1.1);
 }
 
-.shop-item__image-container:hover::before {
+.shop-item__link--image:hover::before {
   opacity: 1;
 }
 
-.shop-item__image-container:hover .shop-item__arrow {
+.shop-item__link--image:hover .shop-item__arrow {
   opacity: 1;
 }
 
 
+.shop-item__link--title {
+    position: relative;
+    display: inline-block;
+    text-decoration: none;
+    transition: color 0.5s ease;
+}
+
+.shop-item__link--title .shop-item__title {
+    color: black;
+    transition: color 0.5s ease; 
+}
+
+.shop-item__link--title::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #6E9C9F;
+    transition: width 0.5s ease;
+}
+
+.shop-item__link--title:hover .shop-item__title {
+    color: #6E9C9F;
+}
+
+.shop-item__link--title:hover::after {
+    width: 100%;
+}
 .outline-shop-button{
     margin-top: 3rem;
     background: #fff;
@@ -348,3 +389,19 @@ a:hover{
     color: #fff;
     transition: 0.5s;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
