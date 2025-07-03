@@ -402,10 +402,38 @@ a:hover{
     margin-bottom: 1.8rem;
 }
 
-.dream-team__next, .dream-team__prev{
-    color: #6E9C9F;
+.dream-team__text{
+    font-size: 17px;
+    margin-bottom: 2rem;
+}
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  display: none;
 }
 
+.dream-team__next,
+.dream-team__prev {
+  background: none;
+  color: inherit;
+  font-size: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  z-index: 10;
+}
+
+.dream-team__prev svg,
+.dream-team__next svg {
+  transition: transform 0.5s ease;
+}
+
+.dream-team__prev:hover svg,
+.dream-team__next:hover svg {
+  transform: scale(1.1);
+}
 
 .dream-team__pagination {
   display: flex;
@@ -414,20 +442,49 @@ a:hover{
   margin-bottom: 20px;
 }
 
-/* Все буллеты */
+
 .dream-team__pagination .swiper-pagination-bullet {
   width: 30px;
   height: 4px;
   border-radius: 2px;
-  background-color: #D1D1D1; /* Серый для неактивных */
-  opacity: 1; /* Отключаем полупрозрачность Swiper */
-  transition: background-color 0.3s ease;
+  background-color: #fff;
+  opacity: 1;
+  position: relative;
+  overflow: hidden;
 }
 
-/* Активный буллет */
+
 .dream-team__pagination .swiper-pagination-bullet-active {
-  background-color: #fff; /* Белый активный */
+    background-color: #000;
 }
+
+.dream-team__about-link{
+    margin-top: 3rem;
+    color: #6E9C9F;
+    position: relative;
+    overflow: hidden;
+    text-decoration: none;
+    font-size: 17px;
+}
+.dream-team__about-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -4px;
+  width: 100%;
+  height: 1px;
+  background-color: #CEDEDF;
+  opacity: 0;
+  transition: opacity 0.5s ease;
+}
+
+.dream-team__about-link:hover{
+    color: #6E9C9F;
+}
+.dream-team__about-link:hover::after {
+  opacity: 1;
+}
+
 
 
 
