@@ -8,7 +8,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
     <link rel="stylesheet" href="css/style.css">
+    
 
 </head>
 <body>
@@ -134,7 +136,7 @@
         </main>
     </div>
 
-    <section class="new-collection">
+    <section class="section new-collection">
         <div class="container">
 
             <h2 class="section-title">Новая коллекция</h2>
@@ -192,7 +194,102 @@
         </div>
     </section>
 
+
+    <section class="section important-for-us">
+        <div class="container">
+
+            <h2 class="section-title important-for-us__title">Что для нас важно</h2>
+
+            <div class="row">
+                <div class="col-4 important-for-us__item">
+                    <img src="img/quality.svg" alt="Качество" class="important-for-us__icon">
+                    <h3 class="important-for-us__subtitle">Качество</h3>
+                    <p class="important-for-us__text">Наши профессионалы работают на лучшем оборудовании для пошива одежды беспрецедентного <br> качества</p>
+                </div>
+                <div class="col-4 important-for-us__item">
+                    <img src="img/speed.svg" alt="Скорость" class="important-for-us__icon">
+                    <h3 class="important-for-us__subtitle">Скорость</h3>
+                    <p class="important-for-us__text">Благодаря отлаженной системе в Womazing мы можем отшивать до<br> 20-ти единиц продукции в наших собственных цехах</p>
+                </div>
+                <div class="col-4 important-for-us__item">
+                    <img src="img/responsibility.svg" alt="Ответственность" class="important-for-us__icon">
+                    <h3 class="important-for-us__subtitle">Ответственность</h3>
+                    <p class="important-for-us__text">Мы заботимся о людях и планете. Безотходное производство и <br> комфортные условия труда - все<br> это Womazing</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <section class="dream-team section">
+    <div class="dream-team__container container">
+
+        <h2 class="dream-team__title section-title">
+        Команда мечты Womazing
+        </h2>
+
+        <div class="dream-team__content row">
+        
+        <div class="dream-team__slider col-8">
+            <div class="dream-team__swiper swiper">
+            <div class="dream-team__wrapper swiper-wrapper">
+                <div class="dream-team__slide swiper-slide">
+                <img src="img/dream-team1.png" alt="">
+                </div>
+                <div class="dream-team__slide swiper-slide">
+                <img src="img/dream-team2.png" alt="">
+                </div>
+                <div class="dream-team__slide swiper-slide">
+                <img src="img/dream-team3.png" alt="">
+                </div>
+            </div>
+
+            <div class="dream-team__next swiper-button-next"></div>
+            <div class="dream-team__prev swiper-button-prev"></div>
+            <div class="dream-team__pagination swiper-pagination"></div>
+            </div>
+        </div>
+
+        <div class="dream-team__info col-3 offset-1">
+            <h3 class="dream-team__subtitle">Для каждой</h3>
+            <p class="dream-team__text">Каждая девушка уникальна. Однако, мы схожи в миллионе мелочей.</p>
+            <p class="dream-team__text">Womazing ищет эти мелочи и создает прекрасные вещи, которые выгодно подчеркивают достоинства каждой девушки.</p>
+        </div>
+        
+        </div>
+    </div>
+    </section>
+
+
+
+
+
+
+
+
+
     <script src="js/vendor/bootstrap.bundle.min.js"></script>
+    <!-- Swiper JS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script>
+    const swiper = new Swiper('.dream-team__swiper', {
+        loop: true,
+        navigation: {
+            nextEl: '.dream-team__next',
+            prevEl: '.dream-team__prev',
+        },
+        pagination: {
+            el: '.dream-team__pagination',
+            clickable: true,
+            type: 'bullets',
+        },
+        autoplay: {
+        delay: 5000, // 5000 мс = 5 секунд
+        disableOnInteraction: false, // продолжает автопрокрутку даже после ручного переключения
+        },
+        });
+    </script>
     <script src="js/text_slider.js"></script>
     <script src="js/script_for_sale.js"></script>
 </body>

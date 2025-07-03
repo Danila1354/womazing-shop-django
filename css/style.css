@@ -255,7 +255,7 @@ a:hover{
 }
 
 
-.new-collection {
+.section {
     padding-top: 7rem;
 }
 
@@ -379,8 +379,55 @@ a:hover{
 }
 
 
+.important-for-us__icon{
+    max-width: 61px;
+    max-height: 61px;
+    margin-bottom: 2rem;;
+
+}
+
+.important-for-us__subtitle{
+    font-size: 25px;
+    font-style: medium;
+    margin-bottom: 1.5rem;
+}
+
+.important-for-us__text{
+    font-size: 17px;
+}
+
+.dream-team__subtitle{
+    font-size: 25px;
+    font-style: medium;
+    margin-bottom: 1.8rem;
+}
+
+.dream-team__next, .dream-team__prev{
+    color: #6E9C9F;
+}
 
 
+.dream-team__pagination {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+/* Все буллеты */
+.dream-team__pagination .swiper-pagination-bullet {
+  width: 30px;
+  height: 4px;
+  border-radius: 2px;
+  background-color: #D1D1D1; /* Серый для неактивных */
+  opacity: 1; /* Отключаем полупрозрачность Swiper */
+  transition: background-color 0.3s ease;
+}
+
+/* Активный буллет */
+.dream-team__pagination .swiper-pagination-bullet-active {
+  background-color: #fff; /* Белый активный */
+}
 
 
 
