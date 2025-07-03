@@ -43,6 +43,7 @@ a:hover{
 
 .logo-text{
     letter-spacing: 0.1em;
+    text-transform: uppercase;
 }
 
 .nav-link {
@@ -486,7 +487,24 @@ a:hover{
 }
 
 
+.footer{
+    margin-top: 8rem;
+    padding-top: 6rem;
+    background-color: #F1EADC;
+}
 
+
+
+.footer__legal{
+    font-size: 13px;
+    margin-bottom: 6px;;
+}
+
+.footer__logo{
+    display: flex;
+    align-items: center;
+    margin-bottom: 4rem;
+}
 
 
 
