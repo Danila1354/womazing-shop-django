@@ -25,7 +25,7 @@
                 </a>
 
                 <!-- Навигация -->
-                <ul class="navbar-nav d-flex flex-row gap-4">
+                <ul class="navbar-nav header-nav d-flex flex-row gap-4">
                     <li class="nav-item">
                     <a class="nav-link main-page" href="#">Главная</a>
                     </li>
@@ -287,33 +287,41 @@
                     <p class="footer__legal">Политика конфиденциальности</p>
                     <p class="footer__legal">Публичная оферта</p>
                 </div>
+                <div class="col-5 footer-nav">
+                    <ul class="footer-nav__list navbar-nav d-flex flex-row gap-4">
+                    <li class="footer-nav__item nav-item">
+                        <a class="footer-nav__link nav-link main-page" href="#">Главная</a>
+                    </li>
+                    <li class="footer-nav__item nav-item">
+                        <div class="footer-nav__shop">
+                            <a class="footer-nav__link nav-link shop-page" href="#">Магазин</a>
+                            <ul class="footer-nav__sublist">
+                                <li><a href="#" class ="footer-nav__sublink">Пальто</a></li>
+                                <li><a href="#" class ="footer-nav__sublink">Свитшоты</a></li>
+                                <li><a href="#" class ="footer-nav__sublink">Кардиганы</a></li>
+                                <li><a href="#" class ="footer-nav__sublink">Толстовки</a></li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="footer-nav__item nav-item">
+                        <a class="footer-nav__link nav-link brand-page" href="#">О бренде</a>
+                    </li>
+                    <li class="footer-nav__item nav-item">
+                        <a class="footer-nav__link nav-link contacts-page" href="#">Контакты</a>
+                    </li>
+                </ul>
+                </div>
+
             </div>
 
         </div>
     </footer>
+    
 
 
     <script src="js/vendor/bootstrap.bundle.min.js"></script>
-    <!-- Swiper JS -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script>
-    const swiper = new Swiper('.dream-team__swiper', {
-        loop: true,
-        navigation: {
-            nextEl: '.dream-team__next',
-            prevEl: '.dream-team__prev',
-        },
-        pagination: {
-            el: '.dream-team__pagination',
-            clickable: true,
-            type: 'bullets',
-        },
-        autoplay: {
-        delay: 5000, 
-        disableOnInteraction: false, 
-        },
-        });
-    </script>
+    <script src="js/swiper_slider.js"></script>
     <script src="js/text_slider.js"></script>
     <script src="js/script_for_sale.js"></script>
 </body>

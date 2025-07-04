@@ -24,7 +24,7 @@ a:hover{
     height: 56px;;
 }
 
-.navbar-nav{
+.header-nav{
     margin-left: 9rem !important;
 }
 
@@ -506,9 +506,18 @@ a:hover{
     margin-bottom: 4rem;
 }
 
+.footer-nav__shop{
+    display: flex;
+    flex-direction: column;
+}
+.footer-nav__sublist{
+    list-style-type: none;
+    padding: 0;
+}
 
-
-
+.footer-nav__sublink{
+    font-size: 13px;
+}
 
 
 
