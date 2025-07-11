@@ -9,6 +9,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
     
 
@@ -19,7 +20,7 @@
             <div class="container d-flex justify-content-start align-items-center">
             
                 <!-- Логотип -->
-                <a href="/" class="navbar-brand d-flex align-items-center">
+                <a href="#" class="navbar-brand d-flex align-items-center">
                     <img src="img/logo.svg" alt="Logo" class="logo-img me-2">
                     <span class="logo-text">Womazing</span>
                 </a>
@@ -27,7 +28,7 @@
                 <!-- Навигация -->
                 <ul class="navbar-nav header-nav d-flex flex-row gap-4">
                     <li class="nav-item">
-                    <a class="nav-link main-page" href="#">Главная</a>
+                    <a class="nav-link main-page active" href="#">Главная</a>
                     </li>
                     <li class="nav-item">
                     <a class="nav-link shop-page" href="#">Магазин</a>
@@ -233,32 +234,32 @@
         
         <div class="dream-team__slider col-8">
             <div class="dream-team__swiper swiper">
-            <div class="dream-team__wrapper swiper-wrapper">
-                <div class="dream-team__slide swiper-slide">
-                <img src="img/dream-team1.png" alt="">
+                <div class="dream-team__wrapper swiper-wrapper">
+                    <div class="dream-team__slide swiper-slide">
+                    <img src="img/dream-team1.png" alt="">
+                    </div>
+                    <div class="dream-team__slide swiper-slide">
+                    <img src="img/dream-team2.png" alt="">
+                    </div>
+                    <div class="dream-team__slide swiper-slide">
+                    <img src="img/dream-team3.png" alt="">
+                    </div>
                 </div>
-                <div class="dream-team__slide swiper-slide">
-                <img src="img/dream-team2.png" alt="">
+
+                <div class="dream-team__next swiper-button-next">
+                    <svg width="29" height="16" viewBox="0 0 29 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M8.34742e-08 8L28 8M28 8L20.8108 15M28 8L20.8108 1" stroke="black"/>
+                    </svg>
+
                 </div>
-                <div class="dream-team__slide swiper-slide">
-                <img src="img/dream-team3.png" alt="">
+                <div class="dream-team__prev swiper-button-prev">
+
+                    <svg width="29" height="16" viewBox="0 0 29 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M29 8L0.999999 8M0.999999 8L8.18919 0.999999M0.999999 8L8.18919 15" stroke="black"/>
+                    </svg>
+
                 </div>
-            </div>
-
-            <div class="dream-team__next swiper-button-next">
-                <svg width="29" height="16" viewBox="0 0 29 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M8.34742e-08 8L28 8M28 8L20.8108 15M28 8L20.8108 1" stroke="black"/>
-                </svg>
-
-            </div>
-            <div class="dream-team__prev swiper-button-prev">
-
-                <svg width="29" height="16" viewBox="0 0 29 16" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M29 8L0.999999 8M0.999999 8L8.18919 0.999999M0.999999 8L8.18919 15" stroke="black"/>
-                </svg>
-
-            </div>
-            <div class="dream-team__pagination swiper-pagination"></div>
+                <div class="dream-team__pagination swiper-pagination"></div>
             </div>
         </div>
 
@@ -279,37 +280,59 @@
 
             <div class="row">
                 <div class="col-3 footer__info">
-                    <div class="footer__logo">
-                        <img src="img/logo.svg" alt="Womazing" class="logo-img footer__logo-img">
-                        <span class="logo-text footer__logo-text">Womazing</span>
-                    </div>
+                    <a href="#" class="navbar-brand footer__logo">
+                    <img src="img/logo.svg" alt="Logo" class="logo-img me-2">
+                    <span class="logo-text">Womazing</span>
+                </a>
                     <p class="footer__legal">© Все права защищены</p>
                     <p class="footer__legal">Политика конфиденциальности</p>
                     <p class="footer__legal">Публичная оферта</p>
                 </div>
-                <div class="col-5 footer-nav">
-                    <ul class="footer-nav__list navbar-nav d-flex flex-row gap-4">
-                    <li class="footer-nav__item nav-item">
-                        <a class="footer-nav__link nav-link main-page" href="#">Главная</a>
+                <div class="col-5 footer__nav">
+                    <ul class="footer__nav-list navbar-nav d-flex flex-row gap-4">
+                    <li class="footer__nav-item nav-item">
+                        <a class="footer__nav-link nav-link main-page active" href="#">Главная</a>
                     </li>
-                    <li class="footer-nav__item nav-item">
-                        <div class="footer-nav__shop">
-                            <a class="footer-nav__link nav-link shop-page" href="#">Магазин</a>
-                            <ul class="footer-nav__sublist">
-                                <li><a href="#" class ="footer-nav__sublink">Пальто</a></li>
-                                <li><a href="#" class ="footer-nav__sublink">Свитшоты</a></li>
-                                <li><a href="#" class ="footer-nav__sublink">Кардиганы</a></li>
-                                <li><a href="#" class ="footer-nav__sublink">Толстовки</a></li>
+                    <li class="footer__nav-item nav-item">
+                        <div class="footer__nav-shop">
+                            <a class="footer__nav-link nav-link shop-page" href="#">Магазин</a>
+                            <ul class="footer__nav-sublist">
+                                <li><a href="#" class ="footer__nav-sublink">Пальто</a></li>
+                                <li><a href="#" class ="footer__nav-sublink">Свитшоты</a></li>
+                                <li><a href="#" class ="footer__nav-sublink">Кардиганы</a></li>
+                                <li><a href="#" class ="footer__nav-sublink">Толстовки</a></li>
                             </ul>
                         </div>
                     </li>
-                    <li class="footer-nav__item nav-item">
-                        <a class="footer-nav__link nav-link brand-page" href="#">О бренде</a>
+                    <li class="footer__nav-item nav-item">
+                        <a class="footer__nav-link nav-link brand-page" href="#">О бренде</a>
                     </li>
-                    <li class="footer-nav__item nav-item">
-                        <a class="footer-nav__link nav-link contacts-page" href="#">Контакты</a>
+                    <li class="footer__nav-item nav-item">
+                        <a class="footer__nav-link nav-link contacts-page" href="#">Контакты</a>
                     </li>
                 </ul>
+                </div>
+
+                <div class="offset-2 col-2 footer__contacts">
+                    <div class="footer__contacts-phone-and-email">
+                        <a href="tel:+74958235412" class="footer__contacts-phone">+7 (495) 823-54-12</a>
+                        <a href="mailto:info@womazing.ru" class="footer__contacts-email">info@womazing.ru</a>
+                    </div>
+                    <div class="footer__contacts-social">
+                        <a href="#" class="footer__contacts-link">
+                          <i class="fab fa-instagram footer__contacts-icon ms-0"></i>
+                        </a>
+                        <a href="#" class="footer__contacts-link">
+                            <i class="fab fa-facebook footer__contacts-icon"></i>
+                        </a>
+                        <a href="#" class="footer__contacts-link">
+                            <i class="fab fa-twitter footer__contacts-icon"></i>
+                        </a>
+
+                    </div>
+                    <div class="footer__contacts-visa">
+                        <img src="img/visa.png" alt="" class="footer__contacts-visa-img">
+                    </div>
                 </div>
 
             </div>

@@ -16,6 +16,10 @@ a:hover{
     text-decoration: none;
     transition: 0.3s;
 }
+.nav-link.active{
+    color: #6E9C9F !important;
+    text-decoration: none;
+}
 .container{
     max-width: 1110px;
 }
@@ -489,15 +493,17 @@ a:hover{
 
 .footer{
     margin-top: 8rem;
-    padding-top: 6rem;
+    padding: 5rem 0;
+    min-height: 363px;
     background-color: #F1EADC;
+
 }
 
 
 
 .footer__legal{
     font-size: 13px;
-    margin-bottom: 6px;;
+    margin-bottom: 6px;
 }
 
 .footer__logo{
@@ -506,21 +512,54 @@ a:hover{
     margin-bottom: 4rem;
 }
 
-.footer-nav__shop{
+.footer__nav-shop{
     display: flex;
     flex-direction: column;
 }
-.footer-nav__sublist{
+.footer__nav-sublist{
     list-style-type: none;
     padding: 0;
 }
 
-.footer-nav__sublink{
+.footer__nav-sublink{
     font-size: 13px;
+    transition: all 0.5s ease;
+}
+.footer__nav-sublist{
+    margin-top: 1.5rem;
+}
+
+.footer__nav-sublink:hover{
+    color: #6E9C9F;
+    text-decoration: none;
+    
 }
 
 
+.footer__contacts-phone-and-email a{
+    font-size: 15px;
+}
 
+.footer__contacts-social{
+    margin-top: 30px;
+}
+.footer__contacts-icon{
+    width: 22px;
+    height: 22px;
+    transition: all 0.5s ease;
+}
+.footer__contacts-icon{
+    font-size: 22px;
+    margin-left: 12px;
+    transition: all 0.5s ease;
+}
+.footer__contacts-icon:hover{
+    color: #6E9C9F;
+    
+}
 
+.footer__contacts-visa{
+    margin-top: 2rem;
+}
 
 
