@@ -63,22 +63,29 @@
                             <button class="popup-close" id="popupClose" aria-label="Закрыть"></button>
                             <h3 class="popup-title">Заказать обратный звонок</h3>
                             <form class="popup-form">
-                            <div class="popup-field">
-                                <input type="text" name="name" class="popup-input" placeholder=" " required>
-                                <label class="popup-label">Имя</label>
-                            </div>
-                            <div class="popup-field">
-                                <input type="email" name="email" class="popup-input" placeholder=" " required>
-                                <label class="popup-label">Email</label>
-                            </div>
-                            <div class="popup-field">
-                                <input type="tel" name="phone" class="popup-input" placeholder=" " title="+7 (999) 123-45-67" required>
-                                <label class="popup-label">Телефон</label>
-                            </div>
-                            <button type="submit" class="popup-submit">Заказать звонок</button>
+                                <div class="popup-field">
+                                    <input type="text" name="name" class="popup-input" placeholder=" " required>
+                                    <label class="popup-label">Имя</label>
+                                </div>
+                                <div class="popup-field">
+                                    <input type="email" name="email" class="popup-input" placeholder=" " required>
+                                    <label class="popup-label">Email</label>
+                                </div>
+                                <div class="popup-field">
+                                    <input type="tel" name="phone" class="popup-input" placeholder=" " title="+7 (999) 123-45-67" required>
+                                    <label class="popup-label">Телефон</label>
+                                </div>
+                                <button type="submit" class="popup-submit">Заказать звонок</button>
                             </form>
                         </div>
                     </div>
+                    <div class="popup-overlay" id="successPopup" style="display:none;">
+                        <div class="popup success-popup">
+                            <h3 class="popup-title">Отлично! Мы скоро вам перезвоним.</h3>
+                            <button class="btn outline-shop-button popup-success-close" id="successClose" aria-label="Закрыть">Закрыть</button>
+                        </div>
+                    </div>
+
                 </div>
 
                     <a href="tel:+74958235412" class="phone-link ms-2">+7 (495) 823-54-12</a>
