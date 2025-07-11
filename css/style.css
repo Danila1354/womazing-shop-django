@@ -536,6 +536,9 @@ a:hover{
 }
 
 
+.footer__contacts-link{
+    margin-left: 12px;
+}
 .footer__contacts-phone-and-email a{
     font-size: 15px;
 }
@@ -550,7 +553,7 @@ a:hover{
 }
 .footer__contacts-icon{
     font-size: 22px;
-    margin-left: 12px;
+    
     transition: all 0.5s ease;
 }
 .footer__contacts-icon:hover{
