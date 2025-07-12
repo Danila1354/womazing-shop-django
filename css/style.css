@@ -856,3 +856,48 @@ a:hover{
 .product-card__color-button.active{
     border: 1px solid #000;
 }
+
+.product-card__quantity-wrapper {
+  display: flex;
+  align-items: center;
+  border: 1px solid #ccc;
+  overflow: hidden;
+  width: fit-content;
+}
+
+.product-card__quantity-btn {
+  width: 32px;
+  height: 40px;
+  font-size: 20px;
+  border: none;
+  background-color: #000;
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s;
+}
+
+.product-card__quantity-btn:hover {
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.product-card__quantity-input {
+  width: 48px;
+  height: 40px;
+  border: none;
+  text-align: center;
+  font-size: 16px;
+  outline: none;
+}
+
+.product-card__quantity-input::-webkit-outer-spin-button,
+.product-card__quantity-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.product-card__quantity-input {
+  -moz-appearance: textfield;
+}
