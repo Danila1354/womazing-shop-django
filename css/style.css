@@ -791,7 +791,7 @@ a:hover{
 .product-card__image{
     width: 100%;
     height: auto;
-    max-height: 600px;
+    max-height: 800px;
     object-fit: cover;
 }
 
@@ -856,7 +856,12 @@ a:hover{
 .product-card__color-button.active{
     border: 1px solid #000;
 }
-
+.product-card__add-to-cart{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1.8rem;
+}
 .product-card__quantity-wrapper {
   display: flex;
   align-items: center;
