@@ -705,7 +705,8 @@ a:hover{
     margin-top: 5rem;
 }
 .page-hero__title{
-    margin-bottom: 1.6rem;;
+    font-size: 55px;
+    margin-bottom: 1.6rem;
 }
 
 .breadcrumb-item + .breadcrumb-item::before {
@@ -785,4 +786,46 @@ a:hover{
     background-color: #000;
     color: #fff; 
     border-color: #333;
+}
+
+.product-card__image{
+    width: 100%;
+    height: auto;
+    max-height: 600px;
+    object-fit: cover;
+}
+
+.product-card__info{
+    display: flex;
+    flex-direction: column;
+    
+    padding-top: 9.5rem;
+    padding-left: 4rem;
+}
+.product-card__price{
+    display: flex;
+    align-items: center;
+    gap: 1.8rem;
+}
+.product-card__price span{
+    font-size: 40px;
+    
+}
+.product-card__sizes{
+    display: flex;
+    flex-direction: row;
+    gap: 0.8rem;
+}
+.product-card__size-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #ccc;
+    border-radius: 0 !important;
+    padding: 0;
+    width: 41px;
+    height: 41px;
+    color: #333;
+    background-color: #fff; 
+    text-decoration: none;
 }
