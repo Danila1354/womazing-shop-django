@@ -798,7 +798,7 @@ a:hover{
 .product-card__info{
     display: flex;
     flex-direction: column;
-    
+    gap: 3.6rem;
     padding-top: 9.5rem;
     padding-left: 4rem;
 }
@@ -828,4 +828,19 @@ a:hover{
     color: #333;
     background-color: #fff; 
     text-decoration: none;
+    transition: all 0.5s ease;
 }
+
+.product-card__size-button:hover {
+    background-color: #eee;
+}
+.product-card__size-button.active {
+    background-color: #000;
+    color: #fff; 
+    border-color: #333;
+}
+
+.small_standard_price{
+    font-size: 30px !important;
+}
+
