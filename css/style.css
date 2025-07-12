@@ -25,7 +25,8 @@ a:hover{
 }
 
 .header{
-    height: 56px;;
+    background: #fff;
+    height: 56px;
 }
 
 .header-nav{
@@ -82,7 +83,6 @@ a:hover{
     overflow: hidden;
 }
 
-.header,
 .main-wrapper {
     background: linear-gradient(to right, white 58%, #F0E6DD 58%);
 }
@@ -699,4 +699,90 @@ a:hover{
     max-width: 600px;
     justify-content: center;
     align-items: center;
+}
+
+.shop-hero{
+    margin-top: 5rem;
+}
+.shop-hero__title{
+    margin-bottom: 1.6rem;;
+}
+
+.breadcrumb-item + .breadcrumb-item::before {
+  content: "—";
+  color: #909090;
+}
+
+.goods-section__categories{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.7rem;
+    margin-bottom: 2rem;
+    margin-top: 3rem;
+}
+.goods-section__category-button{
+    padding: 19px 65px;
+    border: 1px solid #000;
+    font-size: 17px;
+    transition: all 0.5s ease;
+
+}
+
+.goods-section__category-button.active{
+    background: #000;
+    color: #fff;
+}
+
+
+.goods-section__category-button:hover{
+    background: #000;
+    color: #fff;
+}
+.goods-section__category-button.active:hover {
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.5);
+}
+
+.goods-shown--up{
+    margin-top: 6rem;
+    margin-bottom: 4rem;
+}
+
+.shop-items{
+    margin-bottom: 4rem;
+}
+.goods-shown--bottom{
+    margin-top: 6rem;
+    margin-bottom: 6rem;
+}
+
+.pagination-container{
+    display: flex;
+    justify-content: center;
+}
+.custom-pagination .page-item {
+    margin-right: 0.5rem;
+}
+
+.custom-pagination .page-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid #ccc;
+    border-radius: 0 !important;
+    padding: 0;
+    width: 41px;
+    height: 41px;
+    color: #333;
+    background-color: #fff; 
+    text-decoration: none;
+}
+
+.custom-pagination .page-link:hover {
+    background-color: #eee;
+}
+
+.custom-pagination .page-item.active .page-link {
+    background-color: #000;
+    color: #fff; 
+    border-color: #333;
 }
