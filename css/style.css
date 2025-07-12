@@ -820,7 +820,7 @@ a:hover{
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 1px solid #ccc;
+    border: 1px solid #000;
     border-radius: 0 !important;
     padding: 0;
     width: 41px;
@@ -843,4 +843,16 @@ a:hover{
 .small_standard_price{
     font-size: 30px !important;
 }
-
+.product-card__colors{
+    display: flex;
+    flex-direction: row;
+    gap: 0.8rem;
+}
+.product-card__color-button{
+    width: 41px;
+    height: 41px;
+    border-radius: 50%;
+}
+.product-card__color-button.active{
+    border: 1px solid #000;
+}
