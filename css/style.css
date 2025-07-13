@@ -632,19 +632,19 @@ a:hover{
     margin-top: 2rem;
 }
 
-.popup-form {
+.form {
   display: flex;
   flex-direction: column;
   gap: 1rem;
   margin-top: 1.5rem;
 }
 
-.popup-field {
+.form-field {
   position: relative;
   margin-bottom: 1.5rem;
 }
 
-.popup-input {
+.form-input {
   width: 100%;
   padding: 0.75rem 0 0.25rem 0;
   font-size: 1rem;
@@ -653,9 +653,10 @@ a:hover{
   background-color: transparent;
   outline: none;
   cursor: text;
+  resize: none;
 }
 
-.popup-label {
+.form-label {
   position: absolute;
   top: 0.75rem;
   left: 0;
@@ -665,13 +666,12 @@ a:hover{
   transition: 0.3s ease all;
 }
 
-.popup-input:focus + .popup-label,
-.popup-input:not(:placeholder-shown) + .popup-label {
+.form-input:focus + .form-label,
+.form-input:not(:placeholder-shown) + .form-label {
   top: -0.75rem;
   font-size: 0.75rem;
   color: #6E9C9F;
 }
-
 
 .popup-submit {
   padding: 0.75rem 1rem;
@@ -931,4 +931,24 @@ a:hover{
     justify-content: center;
     align-items: center;
     margin-top: 8rem;
+}
+
+.map-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+.contacts__container{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 9rem;
+    margin-top: 6rem;
+    margin-bottom: 6rem;
+}
+
+.contacts__text-us{
+    max-width: 350px;
 }
