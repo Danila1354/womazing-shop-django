@@ -959,6 +959,7 @@ a:hover{
 
 .contacts__success-text{
     margin-top: 4rem;
+    foznt-size: 17px;
     display: flex;
     padding: 30px 76px;
     max-width: 437px;
