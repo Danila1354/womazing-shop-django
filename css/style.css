@@ -949,6 +949,20 @@ a:hover{
     margin-bottom: 6rem;
 }
 
-.contacts__text-us{
+.contacts__form-field{
     max-width: 350px;
+}
+
+.contacts__form-field--message{
+    max-width: 443px;
+}
+
+.contacts__success-text{
+    margin-top: 4rem;
+    display: flex;
+    padding: 30px 76px;
+    max-width: 437px;
+    justify-content: center;
+    align-items: center;
+    background: #F1EADC;
 }
