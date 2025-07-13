@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Карточка товара</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <title>О бренде</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Overpass:ital,wght@0,100..900;1,100..900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -29,10 +29,10 @@
                     <a class="nav-link main-page" href="index.html">Главная</a>
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link shop-page active" href="shop.html">Магазин</a>
+                    <a class="nav-link shop-page" href="shop.html">Магазин</a>
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link brand-page" href="about.html">О бренде</a>
+                    <a class="nav-link brand-page active" href="about.html">О бренде</a>
                     </li>
                     <li class="nav-item">
                     <a class="nav-link contacts-page" href="#">Контакты</a>
@@ -97,98 +97,63 @@
         </nav>
     </header>
 
+
     <section class="section page-hero">
         <div class="container">
-            <h1 class="section-title page-hero__title">Свитшот Sweet Shot</h1>
+            <h1 class="section-title page-hero__title">О бренде</h1>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="index.html">Главная</a></li>
-                    <li class="breadcrumb-item" aria-current="shop.html"><a href="shop.html">Магазин</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Свитшот Sweet Shot</li>
+                    <li class="breadcrumb-item active" aria-current="page">О бренде</li>
                 </ol>
             </nav>
         </div>
     </section>
 
-    <section class="section product-card">
+    <section class="section about">
         <div class="container">
             <div class="row">
-                <div class="col-6 product-card__image-container">
-                    <img src="img/shop_item3.png" alt="Product Image" class="product-card__image img-fluid">
+                <div class="col-6 about__image-block about__image-block--left">
+                    <img src="img/about-img1.png" alt="" class="about__img img-fluid">
                 </div>
-                <div class="col-6 product-card__info">
-                    <p class="shop-item__price product-card__price"> <span class="sale_price">$129</span><span class="standard_price small_standard_price">$229</span> </p>
-                    <div class="product-card__sizes-block">
-                        <p class="product-card__choose-price">
-                            Выберите размер
+                <div class="col-6 about__text-block">
+                    <h3 class="about__subtitle">
+                        Идея и женщина
+                    </h3>
+                    <div class="about__par-block">
+                        <p class="about__text">
+                            Womazing была основана в 2010-ом и стала одной из самых успешных компаний нашей страны. Как и многие итальянские фирмы, Womazing остаётся семейной компанией, хотя ни один из членов семьи не является модельером.
                         </p>
-                        <div class="product-card__sizes">
-                            <button class="btn product-card__size-button">XS</button>
-                            <button class="btn product-card__size-button active">S</button>
-                            <button class="btn product-card__size-button">M</button>
-                            <button class="btn product-card__size-button">L</button>
-                            <button class="btn product-card__size-button">XL</button>
-                        </div>
-                    </div>
-                    <div class="product-card__colors-block">
-                        <p class="product-card__choose-color">
-                            Выберите цвет
+                        <p class="about__text">
+                            Мы действуем по успешной формуле, прибегая к услугам известных модельеров для создания своих коллекций. Этот метод был описан критиком моды Колином Макдауэллом как форма дизайнерского со-творчества, характерная для ряда итальянских prêt-a-porter компаний. 
                         </p>
-                        <div class="product-card__colors">
-                            <button class="btn product-card__color-button" style="background-color: #927876;"></button>
-                            <button class="btn product-card__color-button active" style="background-color: #D4D4D4;"></button>
-                            <button class="btn product-card__color-button" style="background-color: #FD9696;"></button>
-                            <button class="btn product-card__color-button" style="background-color: #FDC796;"></button>
-                        </div>
                     </div>
-                    <div class="product-card__add-to-cart">
-                        <div class="product-card__quantity-wrapper">
-                            <button class="product-card__quantity-btn product-card__quantity-btn--minus">−</button>
-                            <input type="number" class="product-card__quantity-input" value="1" min="1">
-                            <button class="product-card__quantity-btn product-card__quantity-btn--plus">+</button>
-                        </div>
-                        <a href="" class="btn shop-button">
-                            Добавить в корзину
-                        </a>
+                </div>  
+            </div>
+            <div class="row">
+
+                <div class="col-6 about__text-block">
+                    <h3 class="about__subtitle">
+                        Магия в деталях
+                    </h3>
+                    <div class="about__par-block">
+                        <p class="about__text">
+                            Первый магазин Womazing был открыт в маленьком городке на севере страны в 2010-ом году. Первая коллекция состояла из двух пальто и костюма, которые были копиями парижских моделей.
+                        </p>
+                        <p class="about__text">
+                            Несмотря на то, что по образованию основательница была адвокатом, ее семья всегда была тесно связана с шитьём (прабабушка основательницы шила одежду для женщин, а мать основала профессиональную школу кроя и шитья). Стремление производить одежду для масс несло в себе большие перспективы, особенно в то время, когда высокая мода по-прежнему доминировала, а рынка качественного prêt-a-porter попросту не существовало. 
+                        </p>
                     </div>
+                </div>  
+                <div class="col-6 about__image-block about__image-block--right">
+                    <img src="img/about-img2.png" alt="" class="about__img img-fluid">
                 </div>
+            </div>
+            <div class="about__button">
+                <a href="shop.html" class="btn shop-button">Перейти в магазин</a>
             </div>
         </div>
     </section>
-
-
-    <section class="section related-products">
-        <div class="container">
-            <h2 class="section-title">Связанные товары</h2>
-            <div class="row">
-                <div class="col-4 shop-item">
-                    <div class="shop-item__image-container">
-                        <a href="" class="shop-item__link shop-item__link--image">
-                            <img src="img/shop_item1.png" alt="Shop Item 1" class="shop-item__image img-fluid">
-                            <img src="img/right_arrow.svg" alt="Arrow" class="shop-item__arrow">
-                        </a>
-                    </div>
-                    <a href="" class="shop-item__link shop-item__link--title">
-                        <h4 class="shop-item__title">Футболка USA</h4>
-                    </a>
-                    <p class="shop-item__price"> <span class="standard_price">$229</span> <span class="sale_price">$129</span></p>
-                </div>
-                <div class="col-4 shop-item">
-                    <div class="shop-item__image-container">
-                        <a href="" class="shop-item__link shop-item__link--image">
-                            <img src="img/shop_item2.png" alt="Shop Item 2" class="shop-item__image img-fluid">
-                            <img src="img/right_arrow.svg" alt="Arrow" class="shop-item__arrow">
-                        </a>
-                    </div>
-                    <a href="" class="shop-item__link shop-item__link--title">
-                        <h4 class="shop-item__title">Купальник Glow</h4>
-                    </a>
-                    <p class="shop-item__price"> <span class="standard_price">$129</span> <span class="sale_price">$129</span></p>
-                </div>
-            </div>
-        </div>
-    </section>
-
 
     <footer class="footer">
         <div class="container">
@@ -206,11 +171,11 @@
                 <div class="col-5 footer__nav">
                     <ul class="footer__nav-list navbar-nav d-flex flex-row gap-4">
                     <li class="footer__nav-item nav-item">
-                        <a class="footer__nav-link nav-link main-page" href="#">Главная</a>
+                        <a class="footer__nav-link nav-link main-page" href="index.html">Главная</a>
                     </li>
                     <li class="footer__nav-item nav-item">
                         <div class="footer__nav-shop">
-                            <a class="footer__nav-link nav-link shop-page active" href="shop.html">Магазин</a>
+                            <a class="footer__nav-link nav-link shop-page" href="shop.html">Магазин</a>
                             <ul class="footer__nav-sublist">
                                 <li><a href="#" class ="footer__nav-sublink">Пальто</a></li>
                                 <li><a href="#" class ="footer__nav-sublink">Свитшоты</a></li>
@@ -220,7 +185,7 @@
                         </div>
                     </li>
                     <li class="footer__nav-item nav-item">
-                        <a class="footer__nav-link nav-link brand-page" href="about.html">О бренде</a>
+                        <a class="footer__nav-link nav-link brand-page active" href="about.html">О бренде</a>
                     </li>
                     <li class="footer__nav-item nav-item">
                         <a class="footer__nav-link nav-link contacts-page" href="#">Контакты</a>
@@ -259,6 +224,7 @@
 
 
 
+
     <script src="js/vendor/bootstrap.bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="https://unpkg.com/inputmask@5.0.8/dist/inputmask.min.js"></script>
@@ -271,7 +237,5 @@
         }).mask(phoneInput);
     </script>
     <script src="js/popup.js"></script>
-    <script src="js/script_for_sale.js"></script>
-    <script src="js/product_card_quantity.js"></script>
 </body>
 </html>

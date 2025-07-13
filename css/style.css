@@ -906,3 +906,29 @@ a:hover{
 .product-card__quantity-input {
   -moz-appearance: textfield;
 }
+.about__text-block{
+    padding-top: 7rem;
+}
+
+.about__subtitle{
+    font-size: 25px;
+    font-style: medium;
+    margin-bottom: 3rem;
+}
+
+.about__img{
+    width: 100%;
+    height: auto;
+    max-width: 442px;
+    max-height: 547px;
+}
+.about__image-block--right{
+    text-align: right;
+}
+
+.about__button{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 8rem;
+}
