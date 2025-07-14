@@ -870,7 +870,7 @@ a:hover{
   width: fit-content;
 }
 
-.product-card__quantity-btn {
+.product-card__quantity-btn{
   width: 32px;
   height: 40px;
   font-size: 20px;
@@ -888,7 +888,7 @@ a:hover{
   background-color: rgba(0, 0, 0, 0.8);
 }
 
-.product-card__quantity-input {
+.product-card__quantity-input{
   width: 48px;
   height: 40px;
   border: none;
@@ -1014,4 +1014,55 @@ a:hover{
 .cart__total-value{
     margin: 0;
     padding: 0;
+}
+
+
+.coupon{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 6rem;
+    
+}
+.coupon__button{
+    margin: 0;
+    padding: 22px 50px;;
+}
+
+.update-cart{
+    display: flex;
+    
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 6rem;
+}
+.update-cart__button{
+    margin: 0;
+    margin-left: auto;
+    padding: 22px 50px;
+}
+.presummary{
+    margin-top: 6rem;
+}
+.summary__text span{
+    font-size: 25px;
+}
+.summary__text{
+    display: flex;
+    width: 287px;
+    height: 68px;
+    font-weight: medium;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 50px;
+    margin: 0;
+    background: #F1EADC;
+}
+.summary{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
 }
