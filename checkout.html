@@ -105,93 +105,64 @@
 
     <section class="section page-hero">
         <div class="container">
-            <h1 class="section-title page-hero__title">Корзина</h1>
+            <h1 class="section-title page-hero__title">Оформление заказа</h1>
             <nav aria-label="breadcrumb">
                 <ol class="breadcrumb">
                     <li class="breadcrumb-item"><a href="index.html">Главная</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">Корзина</li>
+                    <li class="breadcrumb-item active" aria-current="page">Оформление заказа</li>
                 </ol>
             </nav>
         </div>
     </section>
 
-    <section class="section cart">
+
+
+    <section class="section order">
         <div class="container">
             <div class="row">
-                <div class="col-5">
-                    <h4 class="cart__header">
-                        Товар
-                    </h4>
+                <div class="col-4">
+                    <h3 class="order__user-data-title">
+                        Данные покупателя
+                    </h3>
+                    <form class="order__user-data form form">
+                        <div class="form-field">
+                            <input type="text" name="name" class="form-input" placeholder=" " required>
+                            <label class="form-label">Имя</label>
+                        </div>
+                        <div class="form-field">
+                            <input type="email" name="email" class="form-input" placeholder=" " required>
+                            <label class="form-label">Email</label>
+                        </div>
+                        <div class="form-field">
+                            <input type="tel" name="phone" class="form-input" placeholder=" " title="+7 (999) 123-45-67" required>
+                            <label class="form-label">Телефон</label>
+                        </div>
+                    </form>
                 </div>
-                <div class="col-2">
-                    <h4 class="cart__header">
-                        Цена
-                    </h4>
-                </div>
-                <div class="col-3">
-                    <h4 class="cart__header">
-                        Количество
-                    </h4>
-                </div>
-                <div class="col-2">
-                    <h4 class="cart__header">
-                        Всего
-                    </h4>
-                </div>
-            </div>
-            <hr>
-            <div class="row cart__item">
-                <div class="col-5 cart__product">
-                    <button class="btn cart__product-remove-btn">×</button>
-                    <a href="#" class="cart__product-link">
-                        <img src="img/shop_item1.png" alt="Item" class="cart__product-image img-fluid">
-                    </a>
-                    <a href="#" class="cart__product-link">
-                    <p class="cart__product-name">Футболка USA</p>
-                    </a>
-                </div>
-                <div class="col-2 cart__price">
-                    <p class="cart__price-value">$129</p>
-                </div>
-                <div class="col-3 cart__quantity">
-                    <div class="product-card__quantity-wrapper">
-                        <button class="product-card__quantity-btn product-card__quantity-btn--minus">−</button>
-                        <input type="number" class="product-card__quantity-input" value="1" min="1">
-                        <button class="product-card__quantity-btn product-card__quantity-btn--plus">+</button>
+                <div class="offset-3 col-3">
+                    <h3 class="order__info-title">
+                        Ваш заказ
+                    </h3>
+                    <div class="order__info-block order__info-subtitles-block">
+                        <h4 class="order__info-subtitle">Товар</h4>
+                        <h4 class="order__info-subtitle">Всего</h4>
+                    </div>
+                    <div class="order__info-block order__info-product">
+                        <p class="order__info-text">Футболка USA</p>
+                        <p class="order__info-product-text">$129</p>
+                    </div>
+                    <div class="order__info-block order__presummary">
+                        <p class="order__info-text">Предытог</p>
+                        <p class="order__info-text">$129</p>
+                    </div>
+                    <div class="order__info-block order__summary summary">
+                        <p class="order__info-summary-text summary__text"><span class="order__info-summary-span summary__span">Итого:</span> <span class="order__info-summary-span summary__sum">$129</span></p>
                     </div>
                 </div>
-                <div class="col-2 cart__total">
-                    <p class="cart__total-value">$129</p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-6 coupon">
-                    <div class="form-field m-0">
-                        <input type="text" name="coupon" class="form-input" placeholder=" " required>
-                        <label class="form-label">Введите купон</label>
-                    </div>
-                    <a href="#" class="btn outline-shop-button coupon__button">Применить купон</a>
-                </div>
-                <div class="col-6 update-cart">
-                    <a href="#" class="btn outline-shop-button update-cart__button">Обновить корзину</a>
-                </div>
-            </div>
-            <div class="row presummary">
-                <div class="offset-6 col-2">
-                    <p class="presummary__text">Подытог: $129</p>
-                </div>
-            </div>
-            <div class="row ">
-                <div class="offset-6 col-6 summary">
-                    <p class="summary__text"><span class="summary__span">Итого:</span> <span class="summary__sum">$129</span></p>
-                    <a href="checkout.html" class="btn shop-button summary__button">Оформить заказ</a>
-                </div>
-                
             </div>
             
         </div>
     </section>
-
 
 
 
