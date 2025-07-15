@@ -124,7 +124,7 @@
                     <h3 class="order__user-data-title">
                         Данные покупателя
                     </h3>
-                    <form class="order__user-data form form">
+                    <form class="order__user-data form">
                         <div class="form-field">
                             <input type="text" name="name" class="form-input" placeholder=" " required>
                             <label class="form-label">Имя</label>
@@ -160,7 +160,68 @@
                     </div>
                 </div>
             </div>
-            
+            <div class="row order__address-and-payment">
+                <div class="col-4">
+                    <div class="order__user-address">
+                        <h3 class="order__user-address-title">
+                            Адрес доставки
+                        </h3>
+                        <form class="order__user-address-form form">
+                            <div class="form-field">
+                                <input type="text" name="address" class="form-input" placeholder=" " required>
+                                <label class="form-label">Страна</label>
+                            </div>
+                            <div class="form-field">
+                                <input type="text" name="city" class="form-input" placeholder=" " required>
+                                <label class="form-label">Город</label>
+                            </div>
+                            <div class="form-field">
+                                <input type="text" name="street" class="form-input" placeholder=" " required>
+                                <label class="form-label">Улица</label>
+                            </div>
+                            <div class="form-field">
+                                <input type="text" name="house" class="form-input" placeholder=" " required>
+                                <label class="form-label">Дом</label>
+                            </div>
+                            <div class="form-field">
+                                <input type="text" name="apartment" class="form-input" placeholder=" ">
+                                <label class="form-label">Квартира</label>
+                            </div>      
+                    
+                        </form>
+                    </div>
+                </div>
+                <div class="col-3 offset-3">
+                    <div class="order__payment-method">
+                        <h3 class="order__payment-method-title">
+                            Способы оплаты
+                        </h3>
+                        <form class="order__payment-method-form">
+                        <label class="radio-label">
+                            <input type="radio" name="payment" value="card" checked>
+                            <span class="radio-text">Оплата картой</span>
+                        </label>
+
+                        <label class="radio-label">
+                            <input type="radio" name="payment" value="cash">
+                            <span class="radio-text">Оплата наличными</span>
+                        </label>
+                        </form>
+                        <a href="#" class="btn shop-button order__payment-method-btn">Разместить заказ</a>
+                    </div>
+                </div>
+
+                <div class="col-4 order__comment">
+                    <h3 class="order__comment-title">
+                        Комментарии
+                    </h3>
+                    <div class="form-field order__comment-field">
+                        <textarea name="message" class="form-input" placeholder=" " required></textarea>
+                        <label class="form-label">Комментарий</label>
+                    </div>
+                </div>
+            </div>
+
         </div>
     </section>
 
