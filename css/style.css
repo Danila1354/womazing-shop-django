@@ -1145,3 +1145,21 @@ a:hover{
 .order__comment-field{
     margin-top: 24px;
 }
+.confirm-order__block{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 2rem;
+}
+.confirm-order__title{
+    margin-bottom: 1rem;
+    padding: 0;
+}
+.confirm-order__text{
+    margin: 0;
+    padding: 0;
+}
+.confirm-order__button-to-main{
+    padding: 22gpx 50px;
+    margin: 0;
+}
