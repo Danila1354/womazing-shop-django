@@ -15,11 +15,11 @@
                 <div class="col-5 footer__nav">
                     <ul class="footer__nav-list navbar-nav d-flex flex-row gap-4">
                     <li class="footer__nav-item nav-item">
-                        <a class="footer__nav-link nav-link main-page active" href="#">Главная</a>
+                        <a class="footer__nav-link nav-link main-page {% if request.resolver_match.url_name == 'home' %}active{% endif %}" href="{% url 'pages:home' %}">Главная</a>
                     </li>
                     <li class="footer__nav-item nav-item">
                         <div class="footer__nav-shop">
-                            <a class="footer__nav-link nav-link shop-page" href="shop.html">Магазин</a>
+                            <a class="footer__nav-link nav-link shop-page" href="#">Магазин</a>
                             <ul class="footer__nav-sublist">
                                 <li><a href="#" class ="footer__nav-sublink">Пальто</a></li>
                                 <li><a href="#" class ="footer__nav-sublink">Свитшоты</a></li>
@@ -29,10 +29,10 @@
                         </div>
                     </li>
                     <li class="footer__nav-item nav-item">
-                        <a class="footer__nav-link nav-link brand-page" href="about.html">О бренде</a>
+                        <a class="footer__nav-link nav-link brand-page {% if request.resolver_match.url_name == 'about' %}active{% endif %}" href="{% url 'pages:about' %}">О бренде</a>
                     </li>
                     <li class="footer__nav-item nav-item">
-                        <a class="footer__nav-link nav-link contacts-page" href="#">Контакты</a>
+                        <a class="footer__nav-link nav-link contacts-page {% if request.resolver_match.url_name == 'contact' %}active{% endif %}" href="{% url 'pages:contact' %}">Контакты</a>
                     </li>
                 </ul>
                 </div>
@@ -55,7 +55,7 @@
 
                     </div>
                     <div class="footer__contacts-visa">
-                        <img src="img/visa.png" alt="" class="footer__contacts-visa-img">
+                        <img src="{% static 'img/visa.png' %}" alt="" class="footer__contacts-visa-img">
                     </div>
                 </div>
 

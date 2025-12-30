@@ -4,7 +4,7 @@
             <div class="container d-flex justify-content-start align-items-center">
             
                 <!-- Логотип -->
-                <a href="#" class="navbar-brand d-flex align-items-center">
+                <a href="{% url 'pages:home' %}" class="navbar-brand d-flex align-items-center">
                     <img src="{% static 'img/logo.svg'%}" alt="Logo" class="logo-img me-2">
                     <span class="logo-text">Womazing</span>
                 </a>
@@ -12,16 +12,16 @@
                 <!-- Навигация -->
                 <ul class="navbar-nav header-nav d-flex flex-row gap-4">
                     <li class="nav-item">
-                    <a class="nav-link main-page active" href="#">Главная</a>
+                    <a class="nav-link main-page {% if request.resolver_match.url_name == 'home' %}active{% endif %}" href="{% url 'pages:home' %}">Главная</a>
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link shop-page" href="shop.html">Магазин</a>
+                    <a class="nav-link shop-page" href="#">Магазин</a>
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link brand-page" href="about.html">О бренде</a>
+                    <a class="nav-link brand-page {% if request.resolver_match.url_name == 'about' %}active{% endif %}" href="{% url 'pages:about' %}">О бренде</a>
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link contacts-page" href="#">Контакты</a>
+                    <a class="nav-link contacts-page {% if request.resolver_match.url_name == 'contact' %}active{% endif %}" href="{% url 'pages:contact' %}">Контакты</a>
                     </li>
                 </ul>
 
