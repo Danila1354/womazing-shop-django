@@ -1,0 +1,218 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Главная страница{% endblock %}
+
+{% block content %}
+    <div class="main-wrapper">
+        <div class="main">
+            <div class="container">
+
+                <div class="row">
+                    <div class="col-6 left-section-hero d-flex flex-column gap-3">
+                        <div class="slide active">
+                            <h1 class="hero-title">
+                                Новые поступления <br>
+                                в этом сезоне
+                            </h1>
+                            <p class="hero-text">
+                                Утонченные сочетания и бархатные<br> оттенки - вот то, что вы искали в этом <br> сезоне. Время исследовать.
+                            </p>
+                        </div>
+                        <div class="slide">
+                            <h1 class="hero-title">
+                                Что-то новенькое.<br> Мы заждались тебя.
+                            </h1>
+                            <p class="hero-text">
+                                Надоело искать себя в сером городе?<br> Настало время новых идей, свежих <br> красок и вдохновения с Womazing!
+                            </p>
+                        </div>
+
+                        <div class="slide">
+                            <h1 class="hero-title">
+                                Включай новый <br> сезон с WOMAZING
+                            </h1>
+                            <p class="hero-text">
+                                Мы обновили ассортимент -<br> легендарные коллекции и новинки от<br> отечественных дизайнеров
+                            </p>
+                        </div>
+                        <div class="d-flex flex-column align-items-end mx-auto" style="max-width: 200px;">
+                            <div class="buttons d-flex">
+                                <a href="#" class="btn down-arrow-button">
+                                    <img src="{% static 'img/down-arrow.svg' %}" alt="Down Arrow" class="down-arrow-icon">
+                                </a>
+                                <a href="#" class="btn shop-button">
+                                    Открыть магазин
+                                </a>
+                            </div>
+
+                            <div class="slider-controls d-flex gap-2">
+                                <span class="slider-bar active"></span>
+                                <span class="slider-bar"></span>
+                                <span class="slider-bar"></span>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="col-6 right-section-hero">
+                        <div class="right-section-hero__image_container right-section-hero__image_container--bottom">
+                            <img src="{% static 'img/help_img1.png' %}" alt="Hero Image 1" class="help-img img-fluid">
+                        </div>
+                        <div class="right-section-hero__image_container right-section-hero__image_container--main">
+                            <img src="{% static 'img/woman_main_img.png' %}" alt="Hero Image 2" class="main-img img-fluid">
+                        </div>
+                        <div class="right-section-hero__image_container right-section-hero__image_container--top">
+                            <img src="{% static 'img/help_img2.png' %}" alt="Hero Image 3" class="help-img img-fluid">
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <section class="section new-collection">
+        <div class="container">
+
+            <h2 class="section-title">Новая коллекция</h2>
+            <div class="row">
+                <div class="col-4 shop-item">
+                    <div class="shop-item__image-container">
+                        <a href="" class="shop-item__link shop-item__link--image">
+                            <img src="{% static 'img/shop_item1.png' %}" alt="Shop Item 1" class="shop-item__image img-fluid">
+                            <img src="{% static 'img/right_arrow.svg' %}" alt="Arrow" class="shop-item__arrow">
+                        </a>
+                    </div>
+                    <a href="" class="shop-item__link shop-item__link--title">
+                        <h4 class="shop-item__title">Футболка USA</h4>
+                    </a>
+                    <p class="shop-item__price"> <span class="standard_price">$229</span> <span class="sale_price">$129</span></p>
+                </div>
+                <div class="col-4 shop-item">
+                    <div class="shop-item__image-container">
+                        <a href="" class="shop-item__link shop-item__link--image">
+                            <img src="{% static 'img/shop_item2.png' %}" alt="Shop Item 2" class="shop-item__image img-fluid">
+                            <img src="{% static 'img/right_arrow.svg' %}" alt="Arrow" class="shop-item__arrow">
+                        </a>
+                    </div>
+                    <a href="" class="shop-item__link shop-item__link--title">
+                        <h4 class="shop-item__title">Купальник Glow</h4>
+                    </a>
+                    <p class="shop-item__price"> <span class="standard_price">$129</span> <span class="sale_price">$129</span></p>
+                </div>
+                <div class="col-4 shop-item">
+                    <div class="shop-item__image-container">
+                        <a href="" class="shop-item__link shop-item__link--image">
+                            <img src="{% static 'img/shop_item3.png' %}" alt="Shop Item 3" class="shop-item__image img-fluid">
+                            <img src="{% static 'img/right_arrow.svg' %}" alt="Arrow" class="shop-item__arrow">
+                        </a>
+                    </div>
+                    <a href="" class="shop-item__link shop-item__link--title">
+                        <h4 class="shop-item__title">Свитшот Sweet Shot</h4>
+                    </a>
+                    <p class="shop-item__price"> <span class="standard_price">$129</span> <span class="sale_price">$129</span></p>
+                </div>     
+             
+            </div>
+            
+
+            <div class="row">
+                <div class="offset-4 col-4 d-flex justify-content-center">
+                    <a href="" class="btn shop-button outline-shop-button">
+                        Открыть магазин
+                    </a>
+                </div>
+            </div>
+
+
+        </div>
+    </section>
+
+
+    <section class="section important-for-us">
+        <div class="container">
+
+            <h2 class="section-title important-for-us__title">Что для нас важно</h2>
+
+            <div class="row">
+                <div class="col-4 important-for-us__item">
+                    <img src="{% static 'img/quality.svg' %}" alt="Качество" class="important-for-us__icon">
+                    <h3 class="important-for-us__subtitle">Качество</h3>
+                    <p class="important-for-us__text">Наши профессионалы работают на лучшем оборудовании для пошива одежды беспрецедентного <br> качества</p>
+                </div>
+                <div class="col-4 important-for-us__item">
+                    <img src="{% static 'img/speed.svg' %}" alt="Скорость" class="important-for-us__icon">
+                    <h3 class="important-for-us__subtitle">Скорость</h3>
+                    <p class="important-for-us__text">Благодаря отлаженной системе в Womazing мы можем отшивать до<br> 20-ти единиц продукции в наших собственных цехах</p>
+                </div>
+                <div class="col-4 important-for-us__item">
+                    <img src="{% static 'img/responsibility.svg' %}" alt="Ответственность" class="important-for-us__icon">
+                    <h3 class="important-for-us__subtitle">Ответственность</h3>
+                    <p class="important-for-us__text">Мы заботимся о людях и планете. Безотходное производство и <br> комфортные условия труда - все<br> это Womazing</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <section class="dream-team section">
+    <div class="dream-team__container container">
+
+        <h2 class="dream-team__title section-title">
+        Команда мечты Womazing
+        </h2>
+
+        <div class="dream-team__content row">
+        
+        <div class="dream-team__slider col-8">
+            <div class="dream-team__swiper swiper">
+                <div class="dream-team__wrapper swiper-wrapper">
+                    <div class="dream-team__slide swiper-slide">
+                    <img src="{% static 'img/dream-team1.png' %}" alt="">
+                    </div>
+                    <div class="dream-team__slide swiper-slide">
+                    <img src="{% static 'img/dream-team2.png' %}" alt="">
+                    </div>
+                    <div class="dream-team__slide swiper-slide">
+                    <img src="{% static 'img/dream-team3.png' %}" alt="">
+                    </div>
+                </div>
+
+                <div class="dream-team__next swiper-button-next">
+                    <svg width="29" height="16" viewBox="0 0 29 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M8.34742e-08 8L28 8M28 8L20.8108 15M28 8L20.8108 1" stroke="black"/>
+                    </svg>
+
+                </div>
+                <div class="dream-team__prev swiper-button-prev">
+
+                    <svg width="29" height="16" viewBox="0 0 29 16" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M29 8L0.999999 8M0.999999 8L8.18919 0.999999M0.999999 8L8.18919 15" stroke="black"/>
+                    </svg>
+
+                </div>
+                <div class="dream-team__pagination swiper-pagination"></div>
+            </div>
+        </div>
+
+        <div class="dream-team__info col-3 offset-1">
+            <h3 class="dream-team__subtitle">Для каждой</h3>
+            <p class="dream-team__text">Каждая девушка уникальна. Однако, мы схожи в миллионе мелочей.</p>
+            <p class="dream-team__text">Womazing ищет эти мелочи и создает прекрасные вещи, которые выгодно подчеркивают достоинства каждой девушки.</p>
+            <a href="#" class="dream-team__about-link">Подробнее о бренде</a>
+        </div>
+        
+        </div>
+    </div>
+    </section>
+
+{% endblock content %}
+
+{% block extra_js %}
+    <script src="{% static 'js/phone_mask.js' %}"></script>
+    <script src="{% static 'js/swiper_slider.js' %}"></script>
+    <script src="{% static 'js/text_slider.js' %}"></script>
+    <script src="{% static 'js/popup.js' %}"></script>
+    <script src="{% static 'js/script_for_sale.js' %}"></script>
+{% endblock %}
