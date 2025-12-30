@@ -595,6 +595,47 @@ a:hover{
   position: relative;
   text-align: center;
 }
+.popup-field {
+    position: relative;
+    margin-bottom: 2rem;
+}
+
+/* Инпут */
+.popup-input {
+    width: 100%;
+    border: none;
+    border-bottom: 2px solid #ccc;
+    outline: none;
+    font-size: 16px;
+    padding: 10px 0 6px;
+    background: transparent;
+    transition: border-color 0.3s;
+}
+
+/* Нижняя линия при фокусе */
+.popup-input:focus {
+    border-bottom-color: #6e9c9f;
+}
+
+/* Label */
+.popup-label {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 16px;
+    color: #999;
+    pointer-events: none;
+    transition: 0.3s ease;
+}
+
+/* Когда инпут в фокусе или заполнен */
+.popup-input:focus + .popup-label,
+.popup-input:not(:placeholder-shown) + .popup-label {
+    top: -3px;
+    font-size: 12px;
+    color: #6e9c9f;
+}
 
 /* Крестик */
 .popup-close {
