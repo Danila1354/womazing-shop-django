@@ -1,5 +1,6 @@
 from django.db import models
 from colorfield.fields import ColorField
+from .utils.upload_paths import product_image_path
 # Create your models here.
 
 
@@ -14,6 +15,17 @@ class Color(models.Model):
     def __str__(self):
         return self.name
 
+
+class Category(models.Model):
+    name = models.CharField("Название категории", max_length=50)
+
+    class Meta:
+        verbose_name = 'Категория'
+        verbose_name_plural = 'Категории'
+
+    def __str__(self):
+        return self.name
+
 class Product(models.Model):
     name = models.CharField("Название товара", max_length=255)
 
@@ -24,11 +36,18 @@ class Product(models.Model):
     def __str__(self):
         return self.name
 
+
 class ProductVariant(models.Model):
-    product = models.ForeignKey(Product, on_delete=models.CASCADE, related_name='variants')
-    color = models.ForeignKey(Color, on_delete=models.PROTECT, related_name='product_variants')
+    product = models.ForeignKey(
+        Product, on_delete=models.CASCADE, related_name="variants"
+    )
+    color = models.ForeignKey(
+        Color, on_delete=models.PROTECT, related_name="product_variants"
+    )
+    image = models.ImageField("Фото товара", upload_to=product_image_path, blank=True, null=True)
     size = models.CharField("Размер", max_length=50)
     price = models.DecimalField("Цена", max_digits=10, decimal_places=2)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='products',null=False)
 
     class Meta:
         verbose_name = "Вариант товара"
