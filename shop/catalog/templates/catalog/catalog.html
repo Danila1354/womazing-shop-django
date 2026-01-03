@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Магазин{% endblock title %}
+
+{% block content %}
+    <section class="section page-hero">
+        <div class="container">
+            <h1 class="section-title page-hero__title">Магазин</h1>
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="{% url 'pages:home' %}">Главная</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Магазин</li>
+                </ol>
+            </nav>
+        </div>
+    </section>
+
+    <section class="section goods-section">
+        <div class="container">
+            <div class="goods-section__categories">
+                <div class="goods-section__button-wrapper">
+                    <button class="btn goods-section__category-button active">Всe</button>
+                </div>
+                {% for category in categories %}
+                <div class="goods-section__button-wrapper">
+                    <button class="btn goods-section__category-button">{{ category.name }}</button>
+                </div>
+                {% endfor %}
+                
+            </div>
+            <p class="goods-shown--up">
+                    Показано <span class="goods-shown-count">9</span> из <span class="goods-shown-total-count">12</span> товаров
+            </p>
+            <div class="row shop-items">
+                {% for product in products %}
+                <div class="col-4 shop-item">
+                    <div class="shop-item__image-container">
+                        <a href="#" class="shop-item__link shop-item__link--image">
+                            <img 
+                                src="{% if product.image %}{{ product.image.url }}{% else %}{% static 'img/shop_item3.png' %}{% endif %}" 
+                                alt="{{ product.name }}" 
+                                class="shop-item__image img-fluid">
+                            <img src="{% static 'img/right_arrow.svg' %}" alt="Arrow" class="shop-item__arrow">
+                        </a>
+                    </div>
+                    <a href="product-card.html" class="shop-item__link shop-item__link--title">
+                        <h4 class="shop-item__title">{{ product.product.name }}</h4>
+                    </a>
+                    <p class="shop-item__price"> <span class="standard_price">${{ product.price }}</span> <span class="sale_price">$129</span></p>
+                </div>
+                {% endfor %}
+            <p class="goods-shown goods-shown--bottom">
+                    Показано <span class="goods-shown-count">9</span> из <span class="goods-shown-total-count">12</span> товаров
+            </p>
+            <nav class="pagination-container" aria-label="Page navigation">
+                <ul class="pagination custom-pagination">
+                    <li class="page-item active custom-page-item">
+                        <a class="page-link custom-page-link" href="#" aria-label="Current page">
+                            1
+                        </a>
+                    </li>
+                    <li class="page-item custom-page-item">
+                        <a class="page-link custom-page-link" href="#">2</a>
+                    </li>
+                    <li class="page-item custom-page-item">
+                        <a class="page-link custom-page-link" href="#" aria-label="Next">
+                            <span aria-hidden="true">&rarr;</span>
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+            
+        </div>
+
+    </section>
+
+{% endblock content %}
