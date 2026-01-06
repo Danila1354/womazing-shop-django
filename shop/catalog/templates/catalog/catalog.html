@@ -46,9 +46,22 @@
                     <a href="product-card.html" class="shop-item__link shop-item__link--title">
                         <h4 class="shop-item__title">{{ product.product.name }}</h4>
                     </a>
-                    <p class="shop-item__price"> <span class="standard_price">${{ product.price }}</span> <span class="sale_price">$129</span></p>
+                    <p class="shop-item__price {% if product.price_with_discount %}sale-active{% endif %}">
+                        <span class="standard_price">
+                            ${{ product.price }}
+                        </span>
+
+                        <span class="sale-price">
+                            {% if product.price_with_discount %}
+                                ${{ product.price_with_discount }}
+                            {% else %}
+                                ${{ product.price }}
+                            {% endif %}
+                        </span>
+                    </p>
                 </div>
                 {% endfor %}
+            </div>
             <p class="goods-shown goods-shown--bottom">
                     Показано <span class="goods-shown-count">{{ page_obj.start_index }}–{{ page_obj.end_index }}</span> из <span class="goods-shown-total-count">{{ page_obj.paginator.count }}</span> товаров
             </p>

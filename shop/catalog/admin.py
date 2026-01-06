@@ -19,6 +19,7 @@ class ProductVariantStacked(admin.StackedInline):
         "color",
         "size",
         "price",
+        "price_with_discount",
         "category",
     )
 

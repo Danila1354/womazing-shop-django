@@ -42,12 +42,15 @@ class ProductVariant(models.Model):
         Product, on_delete=models.CASCADE, related_name="variants"
     )
     color = models.ForeignKey(
-        Color, on_delete=models.PROTECT, related_name="product_variants", blank=True, null=True
+        Color, on_delete=models.PROTECT, related_name="product_variants", blank=True, null=True, verbose_name='Цвет'
     )
     image = models.ImageField("Фото товара", upload_to=product_image_path, blank=True, null=True)
     size = models.CharField("Размер", max_length=50, blank=True, null=True)
     price = models.DecimalField("Цена", max_digits=10, decimal_places=2)
-    category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='products')
+    price_with_discount = models.DecimalField(
+        "Цена со скидкой", max_digits=10, decimal_places=2, blank=True, null=True
+    )
+    category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='products',verbose_name='Категория')
 
     class Meta:
         verbose_name = "Вариант товара"
