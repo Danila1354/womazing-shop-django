@@ -32,30 +32,30 @@
                     Показано <span class="goods-shown-count">{{ page_obj.start_index }}–{{ page_obj.end_index }}</span> из <span class="goods-shown-total-count">{{ page_obj.paginator.count }}</span> товаров
             </p>
             <div class="row shop-items">
-                {% for product in page_obj %}
+                {% for product_variant in page_obj %}
                 <div class="col-4 shop-item">
                     <div class="shop-item__image-container">
-                        <a href="#" class="shop-item__link shop-item__link--image">
+                        <a href="{% url 'catalog:product_detail' product_variant.product.pk %}" class="shop-item__link shop-item__link--image">
                             <img 
-                                src="{% if product.image %}{{ product.image.url }}{% else %}{% static 'img/shop_item3.png' %}{% endif %}" 
-                                alt="{{ product.name }}" 
+                                src="{% if product_variant.image %}{{ product_variant.image.url }}{% else %}{% static 'img/shop_item3.png' %}{% endif %}" 
+                                alt="{{ product_variant.product.name }}" 
                                 class="shop-item__image img-fluid">
                             <img src="{% static 'img/right_arrow.svg' %}" alt="Arrow" class="shop-item__arrow">
                         </a>
                     </div>
-                    <a href="product-card.html" class="shop-item__link shop-item__link--title">
-                        <h4 class="shop-item__title">{{ product.product.name }}</h4>
+                    <a href="{% url 'catalog:product_detail' product_variant.product.pk %}" class="shop-item__link shop-item__link--title">
+                        <h4 class="shop-item__title">{{ product_variant.product.name }}</h4>
                     </a>
-                    <p class="shop-item__price {% if product.price_with_discount %}sale-active{% endif %}">
+                    <p class="shop-item__price {% if product_variant.price_with_discount %}sale-active{% endif %}">
                         <span class="standard_price">
-                            ${{ product.price }}
+                            ${{ product_variant.price }}
                         </span>
 
                         <span class="sale-price">
-                            {% if product.price_with_discount %}
-                                ${{ product.price_with_discount }}
+                            {% if product_variant.price_with_discount %}
+                                ${{ product_variant.price_with_discount }}
                             {% else %}
-                                ${{ product.price }}
+                                ${{ product_variant.price }}
                             {% endif %}
                         </span>
                     </p>

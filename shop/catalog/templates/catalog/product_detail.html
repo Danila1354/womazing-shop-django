@@ -1,0 +1,134 @@
+{% extends "base.html" %}
+
+{% block title %}{{ product.name }}{% endblock %}
+{% load static%}
+{% block content %}
+
+<section class="section page-hero">
+    <div class="container">
+        <h1 class="section-title page-hero__title">{{ product.name }}</h1>
+
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{% url 'pages:home' %}">Главная</a></li>
+                <li class="breadcrumb-item"><a href="{% url 'catalog:catalog' %}">Магазин</a></li>
+                <li class="breadcrumb-item active">{{ product.name }}</li>
+            </ol>
+        </nav>
+    </div>
+</section>
+
+<form method="post">
+    {% csrf_token %}
+
+    {{ form.size.as_hidden }}
+    {{ form.color.as_hidden }}
+
+<section class="section product-card">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-6 product-card__image-container">
+                <img src="{% if product.image.url %}{{ product.image.url }}{% else %}{% static 'img/shop_item3.png'%}{% endif %} "
+                     alt="{{ product.name }}"
+                     class="product-card__image img-fluid">
+            </div>
+
+            <div class="col-6 product-card__info">
+                <p class="shop-item__price product-card__price">
+                    {% if product.sale_price %}
+                        <span class="sale_price">${{ product.sale_price }}</span>
+                        <span class="standard_price small_standard_price">${{ product.price }}</span>
+                    {% else %}
+                        <span class="standard_price">${{ product.price }}</span>
+                    {% endif %}
+                </p>
+
+                <div class="product-card__sizes-block">
+                    <p class="product-card__choose-price">Выберите размер</p>
+                    <div class="product-card__sizes">
+                        {% for value, label in form.fields.size.choices %}
+                            <button type="button"
+                                    class="btn product-card__size-button"
+                                    data-size="{{ value }}">
+                                {{ label }}
+                            </button>
+                        {% endfor %}
+                    </div>
+                </div>
+
+                <div class="product-card__colors-block">
+                    <p class="product-card__choose-color">Выберите цвет</p>
+                    <div class="product-card__colors">
+                        {% for color in form.fields.color.queryset %}
+                            <button type="button"
+                                    class="btn product-card__color-button"
+                                    data-color="{{ color.id }}"
+                                    style="background-color: {{ color.value }}">
+                            </button>
+                        {% endfor %}
+                    </div>
+                </div>
+
+                <div class="product-card__add-to-cart">
+
+                    <div class="product-card__quantity-wrapper">
+                        <button type="button" class="product-card__quantity-btn minus">−</button>
+
+                        <input type="number"
+                               name="quantity"
+                               class="product-card__quantity-input"
+                               value="1"
+                               min="1">
+
+                        <button type="button" class="product-card__quantity-btn plus">+</button>
+                    </div>
+
+                    <button type="submit" class="btn shop-button">
+                        Добавить в корзину
+                    </button>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+</form>
+
+{% endblock %}
+
+{% block extra_js %}
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+
+    document.querySelectorAll('.product-card__size-button').forEach(btn => {
+        btn.addEventListener('click', () => {
+            document.getElementById('id_size').value = btn.dataset.size;
+            document.querySelectorAll('.product-card__size-button')
+                .forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+        });
+    });
+
+    document.querySelectorAll('.product-card__color-button').forEach(btn => {
+        btn.addEventListener('click', () => {
+            document.getElementById('id_color').value = btn.dataset.color;
+            document.querySelectorAll('.product-card__color-button')
+                .forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+        });
+    });
+
+    document.querySelector('.plus').onclick = () => {
+        const input = document.querySelector('.product-card__quantity-input');
+        input.value = parseInt(input.value) + 1;
+    };
+
+    document.querySelector('.minus').onclick = () => {
+        const input = document.querySelector('.product-card__quantity-input');
+        if (input.value > 1) input.value--;
+    };
+
+});
+</script>
+{% endblock %}
