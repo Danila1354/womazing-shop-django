@@ -15,7 +15,7 @@
                     <a class="nav-link main-page {% if request.resolver_match.url_name == 'home' %}active{% endif %}" href="{% url 'pages:home' %}">Главная</a>
                     </li>
                     <li class="nav-item">
-                    <a class="nav-link shop-page {% if request.resolver_match.url_name == 'catalog' %}active{% endif %}" href="{% url 'catalog:catalog' %}">Магазин</a>
+                    <a class="nav-link shop-page {% if request.resolver_match.url_name == 'catalog' or request.resolver_match.url_name == 'product_detail' %}active{% endif %}" href="{% url 'catalog:catalog' %}">Магазин</a>
                     </li>
                     <li class="nav-item">
                     <a class="nav-link brand-page {% if request.resolver_match.url_name == 'about' %}active{% endif %}" href="{% url 'pages:about' %}">О бренде</a>

@@ -1,3 +1,4 @@
+from django.http import Http404
 from django.shortcuts import render
 from django.core.paginator import Paginator
 from django.shortcuts import get_object_or_404
@@ -10,7 +11,7 @@ from .forms import AddToCartForm
 def catalog(request):
     products = ProductVariant.objects.select_related(
         "product", "color", "category"
-    ).all()
+    ).all().order_by("product__name")
     categories = Category.objects.all()
     paginator = Paginator(products, 9)
     page_number = request.GET.get("page")
@@ -29,6 +30,11 @@ def product_detail(request, pk):
         ),
         pk=pk
     )
+
+    variants = product.variants.all()
+    if not variants.exists():
+        raise Http404("Нет вариантов товара")
+    current_variant = variants.first()
     form = AddToCartForm(product=product)
     if request.method == "POST":
         form = AddToCartForm(request.POST, product=product)
@@ -49,6 +55,7 @@ def product_detail(request, pk):
         "catalog/product_detail.html",
         {
             "product": product,
+            "variant": current_variant,
             "form": form,
         },
     )

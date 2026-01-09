@@ -29,18 +29,18 @@
         <div class="row">
 
             <div class="col-6 product-card__image-container">
-                <img src="{% if product.image.url %}{{ product.image.url }}{% else %}{% static 'img/shop_item3.png'%}{% endif %} "
+                <img src="{% if variant.image %}{{ variant.image.url }}{% else %}{% static 'img/shop_item3.png'%}{% endif %} "
                      alt="{{ product.name }}"
                      class="product-card__image img-fluid">
             </div>
 
             <div class="col-6 product-card__info">
                 <p class="shop-item__price product-card__price">
-                    {% if product.sale_price %}
-                        <span class="sale_price">${{ product.sale_price }}</span>
-                        <span class="standard_price small_standard_price">${{ product.price }}</span>
+                    {% if variant.price_with_discount %}
+                        <span class="sale_price">${{ variant.price_with_discount }}</span>
+                        <span class="standard_price small_standard_price">${{ variant.price }}</span>
                     {% else %}
-                        <span class="standard_price">${{ product.price }}</span>
+                        <span class="standard_price">${{ variant.price }}</span>
                     {% endif %}
                 </p>
 
