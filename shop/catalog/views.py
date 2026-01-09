@@ -35,7 +35,16 @@ def product_detail(request, pk):
     if not variants.exists():
         raise Http404("Нет вариантов товара")
     current_variant = variants.first()
-    form = AddToCartForm(product=product)
+    current_variant = variants.first()
+
+    form = AddToCartForm(
+        product=product,
+        initial={
+            "size": current_variant.size,
+            "color": current_variant.color,
+            "quantity": 1,
+        }
+    )
     if request.method == "POST":
         form = AddToCartForm(request.POST, product=product)
         if form.is_valid():

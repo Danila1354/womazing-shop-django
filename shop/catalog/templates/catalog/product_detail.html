@@ -48,11 +48,11 @@
                     <p class="product-card__choose-price">Выберите размер</p>
                     <div class="product-card__sizes">
                         {% for value, label in form.fields.size.choices %}
-                            <button type="button"
-                                    class="btn product-card__size-button"
-                                    data-size="{{ value }}">
-                                {{ label }}
-                            </button>
+                        <button type="button"
+                                class="btn product-card__size-button {% if value == form.initial.size %}active{% endif %}"
+                                data-size="{{ value }}">
+                            {{ label }}
+                        </button>
                         {% endfor %}
                     </div>
                 </div>
@@ -60,13 +60,13 @@
                 <div class="product-card__colors-block">
                     <p class="product-card__choose-color">Выберите цвет</p>
                     <div class="product-card__colors">
-                        {% for color in form.fields.color.queryset %}
-                            <button type="button"
-                                    class="btn product-card__color-button"
-                                    data-color="{{ color.id }}"
-                                    style="background-color: {{ color.value }}">
-                            </button>
-                        {% endfor %}
+                    {% for color in form.fields.color.queryset %}
+                    <button type="button"
+                            class="btn product-card__color-button {% if color.id == form.initial.color.id %}active{% endif %}"
+                            data-color="{{ color.id }}"
+                            style="background-color: {{ color.value }}">
+                    </button>
+                    {% endfor %}
                     </div>
                 </div>
 
@@ -128,6 +128,15 @@ document.addEventListener('DOMContentLoaded', () => {
         const input = document.querySelector('.product-card__quantity-input');
         if (input.value > 1) input.value--;
     };
+    const activeSize = document.querySelector('.product-card__size-button.active');
+    if (activeSize) {
+        document.getElementById('id_size').value = activeSize.dataset.size;
+    }
+
+    const activeColor = document.querySelector('.product-card__color-button.active');
+    if (activeColor) {
+        document.getElementById('id_color').value = activeColor.dataset.color;
+    }
 
 });
 </script>

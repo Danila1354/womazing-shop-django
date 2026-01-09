@@ -906,7 +906,7 @@ a:hover{
     border-radius: 50%;
 }
 .product-card__color-button.active{
-    border: 1px solid #000;
+    border: 2px solid #000;
 }
 .product-card__add-to-cart{
     display: flex;
