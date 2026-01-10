@@ -43,7 +43,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'colorfield',
     'catalog',
-    'pages'
+    'pages',
+    'sorl.thumbnail',
 ]
 
 MIDDLEWARE = [

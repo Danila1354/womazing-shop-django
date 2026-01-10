@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+{% load thumbnail %}
 {% block title %}Магазин{% endblock title %}
 
 {% block content %}
@@ -36,10 +37,21 @@
                 <div class="col-4 shop-item">
                     <div class="shop-item__image-container">
                         <a href="{% url 'catalog:product_detail' product_variant.product.pk %}" class="shop-item__link shop-item__link--image">
-                            <img 
-                                src="{% if product_variant.image %}{{ product_variant.image.url }}{% else %}{% static 'img/shop_item3.png' %}{% endif %}" 
-                                alt="{{ product_variant.product.name }}" 
-                                class="shop-item__image img-fluid">
+                            {% if product_variant.image %}
+                                {% thumbnail product_variant.image "400x475" crop="center" as im %}
+                                    <img 
+                                        src="{{ im.url }}"
+                                        width="{{ im.width }}"
+                                        height="{{ im.height }}"
+                                        alt="{{ product_variant.product.name }}" 
+                                        class="shop-item__image">
+                                {% endthumbnail %}
+                            {% else %}
+                                <img 
+                                    src="{% static 'img/shop_item3.png' %}" 
+                                    alt="{{ product_variant.product.name }}" 
+                                    class="shop-item__image">
+                            {% endif %}
                             <img src="{% static 'img/right_arrow.svg' %}" alt="Arrow" class="shop-item__arrow">
                         </a>
                     </div>

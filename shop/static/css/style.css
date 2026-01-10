@@ -310,7 +310,7 @@ a:hover{
     position: relative;
     overflow: hidden;
     cursor: pointer;
-    aspect-ratio: 12/16;
+    aspect-ratio: 400/475;
 }
 
 .shop-item__link--image{
