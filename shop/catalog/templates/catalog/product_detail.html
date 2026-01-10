@@ -2,6 +2,7 @@
 
 {% block title %}{{ product.name }}{% endblock %}
 {% load static%}
+{% load thumbnail %}
 {% block content %}
 
 <section class="section page-hero">
@@ -29,11 +30,12 @@
         <div class="row">
 
             <div class="col-6 product-card__image-container">
-                <img src="{% if variant.image %}{{ variant.image.url }}{% else %}{% static 'img/shop_item3.png'%}{% endif %} "
+                {% thumbnail variant.image "530x725" crop="center" as im %}
+                <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}"
                      alt="{{ product.name }}"
-                     class="product-card__image img-fluid">
+                     class="product-card__image">
+                {% endthumbnail %}
             </div>
-
             <div class="col-6 product-card__info">
                 <p class="shop-item__price product-card__price">
                     {% if variant.price_with_discount %}
