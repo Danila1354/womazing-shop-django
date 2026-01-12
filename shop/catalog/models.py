@@ -63,12 +63,11 @@ class ProductVariant(models.Model):
     image = models.ImageField(
         "Фото товара", upload_to=product_image_path, blank=True, null=True
     )
-    size = models.CharField("Размер", max_length=50, blank=True, null=True)
+    size = models.CharField("Размер", max_length=20, blank=True, null=True)
     price = models.DecimalField("Цена", max_digits=10, decimal_places=2)
     price_with_discount = models.DecimalField(
         "Цена со скидкой", max_digits=10, decimal_places=2, blank=True, null=True
     )
-    
 
     class Meta:
         verbose_name = "Вариант товара"

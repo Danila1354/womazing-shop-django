@@ -7,34 +7,42 @@ from .models import ProductVariant, Category, Product
 from .forms import AddToCartForm
 
 
-
 def catalog(request):
-    products = ProductVariant.objects.select_related(
-        "product", "color", "category"
-    ).all().order_by("product__name")
     categories = Category.objects.all()
+    products = (
+        Product.objects.select_related("category")
+        .prefetch_related("variants", "variants__color")
+        .all()
+        .order_by("name")
+    )
+    current_category = 'all'
+    if request.GET.get("category"):
+        if request.GET["category"] != "all":
+            current_category = get_object_or_404(Category, slug=request.GET["category"]).slug
+            products = products.filter(category__slug=request.GET["category"])
+
     paginator = Paginator(products, 9)
     page_number = request.GET.get("page")
     page_obj = paginator.get_page(page_number)
     return render(
         request,
         "catalog/catalog.html",
-        {"categories": categories, "page_obj": page_obj},
+        {
+            "categories": categories, 
+            "page_obj": page_obj,
+            'current_category': current_category,
+        },
     )
 
 
-def product_detail(request, slug):
+def product_detail(request, product_slug):
     product = get_object_or_404(
-        Product.objects.prefetch_related(
-            "variants__color", "variants__category"
-        ),
-        slug=slug
+        Product.objects.prefetch_related("variants", "variants__color"), slug=product_slug
     )
 
     variants = product.variants.all()
     if not variants.exists():
         raise Http404("Нет вариантов товара")
-    current_variant = variants.first()
     current_variant = variants.first()
 
     form = AddToCartForm(
@@ -43,7 +51,7 @@ def product_detail(request, slug):
             "size": current_variant.size,
             "color": current_variant.color,
             "quantity": 1,
-        }
+        },
     )
     if request.method == "POST":
         form = AddToCartForm(request.POST, product=product)
@@ -53,9 +61,7 @@ def product_detail(request, slug):
             quantity = form.cleaned_data["quantity"]
 
             variant = ProductVariant.objects.get(
-                product=product,
-                size=size,
-                color=color
+                product=product, size=size, color=color
             )
             # TODO: Add the variant to the cart
 

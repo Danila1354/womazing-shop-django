@@ -9,7 +9,7 @@ class ColorAdmin(admin.ModelAdmin):
     list_display = ("name", "value")
 
 
-class ProductVariantStacked(admin.StackedInline):
+class ProductVariantInline(admin.StackedInline):
     model = ProductVariant
     extra = 1
     readonly_fields = ("image_preview",)
@@ -30,6 +30,7 @@ class ProductVariantStacked(admin.StackedInline):
             )
         return "Нет изображения"
 
+
     image_preview.short_description = "Превью"
 @admin.register(Category)
 class CategoryAdmin(admin.ModelAdmin):
@@ -41,4 +42,4 @@ class ProductAdmin(admin.ModelAdmin):
     list_display = ("name", "category")
     search_fields = ("name","category__name")
     prepopulated_fields = {'slug':('name',)}
-    inlines = [ProductVariantStacked]
+    inlines = [ProductVariantInline]

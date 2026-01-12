@@ -20,11 +20,11 @@
         <div class="container">
             <div class="goods-section__categories">
                 <div class="goods-section__button-wrapper">
-                    <button class="btn goods-section__category-button active">Всe</button>
+                    <a href="?category=all" class="btn goods-section__category-button {% if current_category == 'all' %}active{% endif %}">Всe</a>
                 </div>
                 {% for category in categories %}
                 <div class="goods-section__button-wrapper">
-                    <button class="btn goods-section__category-button">{{ category.name }}</button>
+                    <a href="?category={{ category.slug }}" class="btn goods-section__category-button {% if current_category == category.slug %}active{% endif %}">{{ category.name }}</a>
                 </div>
                 {% endfor %}
                 
@@ -33,30 +33,31 @@
                     Показано <span class="goods-shown-count">{{ page_obj.start_index }}–{{ page_obj.end_index }}</span> из <span class="goods-shown-total-count">{{ page_obj.paginator.count }}</span> товаров
             </p>
             <div class="row shop-items">
-                {% for product_variant in page_obj %}
+                {% for product in page_obj %}
+                {% with product_variant=product.variants.first %}
                 <div class="col-4 shop-item">
                     <div class="shop-item__image-container">
-                        <a href="{% url 'catalog:product_detail' product_variant.product.slug %}" class="shop-item__link shop-item__link--image">
+                        <a href="{% url 'catalog:product_detail' product.slug %}" class="shop-item__link shop-item__link--image">
                             {% if product_variant.image %}
                                 {% thumbnail product_variant.image "400x475" crop="center" as im %}
                                     <img 
                                         src="{{ im.url }}"
                                         width="{{ im.width }}"
                                         height="{{ im.height }}"
-                                        alt="{{ product_variant.product.name }}" 
+                                        alt="{{ product.name }}" 
                                         class="shop-item__image">
                                 {% endthumbnail %}
                             {% else %}
                                 <img 
                                     src="{% static 'img/shop_item3.png' %}" 
-                                    alt="{{ product_variant.product.name }}" 
+                                    alt="{{ product.name }}" 
                                     class="shop-item__image">
                             {% endif %}
                             <img src="{% static 'img/right_arrow.svg' %}" alt="Arrow" class="shop-item__arrow">
                         </a>
                     </div>
-                    <a href="{% url 'catalog:product_detail' product_variant.product.slug %}" class="shop-item__link shop-item__link--title">
-                        <h4 class="shop-item__title">{{ product_variant.product.name }}</h4>
+                    <a href="{% url 'catalog:product_detail' product.slug %}" class="shop-item__link shop-item__link--title">
+                        <h4 class="shop-item__title">{{ product.name }}</h4>
                     </a>
                     <p class="shop-item__price {% if product_variant.price_with_discount %}sale-active{% endif %}">
                         <span class="standard_price">
@@ -72,8 +73,11 @@
                         </span>
                     </p>
                 </div>
+                {% endwith %}
                 {% endfor %}
             </div>
+
+            
             <p class="goods-shown goods-shown--bottom">
                     Показано <span class="goods-shown-count">{{ page_obj.start_index }}–{{ page_obj.end_index }}</span> из <span class="goods-shown-total-count">{{ page_obj.paginator.count }}</span> товаров
             </p>
