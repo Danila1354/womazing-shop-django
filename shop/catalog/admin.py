@@ -20,7 +20,6 @@ class ProductVariantStacked(admin.StackedInline):
         "size",
         "price",
         "price_with_discount",
-        "category",
     )
 
     def image_preview(self, obj):
@@ -39,6 +38,7 @@ class CategoryAdmin(admin.ModelAdmin):
 
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ("name",)
+    list_display = ("name", "category")
+    search_fields = ("name","category__name")
     prepopulated_fields = {'slug':('name',)}
     inlines = [ProductVariantStacked]
