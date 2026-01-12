@@ -2,24 +2,20 @@ from django.http import Http404
 from django.shortcuts import render
 from django.core.paginator import Paginator
 from django.shortcuts import get_object_or_404
-
+from django.db.models import Prefetch
 from .models import ProductVariant, Category, Product
 from .forms import AddToCartForm
 
 
 def catalog(request):
     categories = Category.objects.all()
-    products = (
-        Product.objects.select_related("category")
-        .prefetch_related("variants", "variants__color")
-        .all()
-        .order_by("name")
-    )
-    current_category = 'all'
-    if request.GET.get("category"):
-        if request.GET["category"] != "all":
-            current_category = get_object_or_404(Category, slug=request.GET["category"]).slug
-            products = products.filter(category__slug=request.GET["category"])
+    products = Product.objects.select_related('category').prefetch_related(
+    Prefetch('variants', queryset=ProductVariant.objects.order_by('price'), to_attr='first_variant_list')).order_by('name')
+    category_slug = request.GET.get("category")
+    if category_slug and category_slug != "all":
+        category = get_object_or_404(Category, slug=category_slug)
+        products = products.filter(category=category)
+        current_category = category.slug
 
     paginator = Paginator(products, 9)
     page_number = request.GET.get("page")

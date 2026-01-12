@@ -1,7 +1,8 @@
 from django.db import models
+
 from colorfield.fields import ColorField
 from .utils.upload_paths import product_image_path
-from django.utils.text import slugify
+
 
 # Create your models here.
 
