@@ -1,6 +1,8 @@
 from django.db import models
 from colorfield.fields import ColorField
 from .utils.upload_paths import product_image_path
+from django.utils.text import slugify
+
 # Create your models here.
 
 
@@ -18,17 +20,19 @@ class Color(models.Model):
 
 class Category(models.Model):
     name = models.CharField("Название категории", max_length=50)
+    slug = models.SlugField("Слаг категории",unique=True)
 
     class Meta:
         verbose_name = 'Категория'
         verbose_name_plural = 'Категории'
+
 
     def __str__(self):
         return self.name
 
 class Product(models.Model):
     name = models.CharField("Название товара", max_length=255)
-
+    slug = models.SlugField("Слаг товара", unique=True)
     class Meta:
         verbose_name = "Товар"
         verbose_name_plural = "Товары"

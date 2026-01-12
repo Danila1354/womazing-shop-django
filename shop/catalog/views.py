@@ -23,12 +23,12 @@ def catalog(request):
     )
 
 
-def product_detail(request, pk):
+def product_detail(request, slug):
     product = get_object_or_404(
         Product.objects.prefetch_related(
             "variants__color", "variants__category"
         ),
-        pk=pk
+        slug=slug
     )
 
     variants = product.variants.all()

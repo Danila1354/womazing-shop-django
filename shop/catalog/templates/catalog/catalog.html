@@ -36,7 +36,7 @@
                 {% for product_variant in page_obj %}
                 <div class="col-4 shop-item">
                     <div class="shop-item__image-container">
-                        <a href="{% url 'catalog:product_detail' product_variant.product.pk %}" class="shop-item__link shop-item__link--image">
+                        <a href="{% url 'catalog:product_detail' product_variant.product.slug %}" class="shop-item__link shop-item__link--image">
                             {% if product_variant.image %}
                                 {% thumbnail product_variant.image "400x475" crop="center" as im %}
                                     <img 
@@ -55,7 +55,7 @@
                             <img src="{% static 'img/right_arrow.svg' %}" alt="Arrow" class="shop-item__arrow">
                         </a>
                     </div>
-                    <a href="{% url 'catalog:product_detail' product_variant.product.pk %}" class="shop-item__link shop-item__link--title">
+                    <a href="{% url 'catalog:product_detail' product_variant.product.slug %}" class="shop-item__link shop-item__link--title">
                         <h4 class="shop-item__title">{{ product_variant.product.name }}</h4>
                     </a>
                     <p class="shop-item__price {% if product_variant.price_with_discount %}sale-active{% endif %}">
