@@ -11,6 +11,12 @@ a:hover{
     color: black;
     text-decoration: none;
 }
+
+.btn.disabled-color{
+    pointer-events: none;
+    cursor: default;
+    opacity: 0.3 !important;
+}
 .nav-link:hover{
     color:#6E9C9F !important;
     text-decoration: none;
@@ -904,9 +910,11 @@ a:hover{
     width: 41px;
     height: 41px;
     border-radius: 50%;
+    transition: all 0.1s ease;
 }
 .product-card__color-button.active{
-    border: 2px solid #000;
+    border: 2px solid #fff;
+    outline: 2px solid #000;
 }
 .product-card__add-to-cart{
     display: flex;

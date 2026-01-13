@@ -44,14 +44,20 @@ def catalog(request):
 
 def product_detail(request, product_slug):
     product = get_object_or_404(
-        Product.objects.prefetch_related("variants", "variants__color"),
+        Product.objects.prefetch_related("variants", "variants__color","variants__size"),
         slug=product_slug,
     )
-
     variants = product.variants.all()
     if not variants.exists():
         raise Http404("Нет вариантов товара")
     current_variant = variants.first()
+    available_size_color_combinations = {}
+    for variant in variants:
+        size = variant.size.id
+        color = variant.color.id
+        if size not in available_size_color_combinations:
+            available_size_color_combinations[size] = []
+        available_size_color_combinations[size].append(color)
 
     form = AddToCartForm(
         product=product,
@@ -65,6 +71,7 @@ def product_detail(request, product_slug):
         form = AddToCartForm(request.POST, product=product)
         if form.is_valid():
             size = form.cleaned_data["size"]
+            print(size)
             color = form.cleaned_data["color"]
             quantity = form.cleaned_data["quantity"]
 
@@ -79,6 +86,7 @@ def product_detail(request, product_slug):
         {
             "product": product,
             "variant": current_variant,
+            "available_size_color_combinations": available_size_color_combinations,
             "form": form,
         },
     )

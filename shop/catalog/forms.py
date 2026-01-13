@@ -1,6 +1,6 @@
 from django import forms
 
-from .models import ProductVariant, Color
+from .models import ProductVariant, Color, Size
 
 
 class AddToCartForm(forms.Form):
@@ -8,7 +8,10 @@ class AddToCartForm(forms.Form):
         queryset=Color.objects.none(),
         widget=forms.RadioSelect
     )
-    size = forms.ChoiceField(choices=[])
+    size = forms.ModelChoiceField(
+        queryset=Size.objects.none(),
+        empty_label=None
+    )
     quantity = forms.IntegerField(
         min_value=1,
         initial=1,
@@ -19,9 +22,10 @@ class AddToCartForm(forms.Form):
         if product:
             variants = ProductVariant.objects.filter(product=product)
 
-            self.fields['size'].choices = [
-                (v.size, v.size) for v in variants
-            ]
+            self.fields['size'].queryset = Size.objects.filter(
+                productvariant__in=variants,
+                
+            ).distinct()
 
             self.fields['color'].queryset = Color.objects.filter(
                 product_variants__in=variants

@@ -53,11 +53,11 @@
                 <div class="product-card__sizes-block">
                     <p class="product-card__choose-price">Выберите размер</p>
                     <div class="product-card__sizes">
-                        {% for value, label in form.fields.size.choices %}
+                        {% for size in form.fields.size.queryset %}
                         <button type="button"
-                                class="btn product-card__size-button {% if value == form.initial.size %}active{% endif %}"
-                                data-size="{{ value }}">
-                            {{ label }}
+                                class="btn product-card__size-button {% if size.id == form.initial.size.id %}active{% endif %}"
+                                data-size="{{ size.id }}">
+                            {{ size.name }}
                         </button>
                         {% endfor %}
                     </div>
@@ -75,6 +75,7 @@
                     {% endfor %}
                     </div>
                 </div>
+                
 
                 <div class="product-card__add-to-cart">
 
@@ -134,16 +135,71 @@ document.addEventListener('DOMContentLoaded', () => {
         const input = document.querySelector('.product-card__quantity-input');
         if (input.value > 1) input.value--;
     };
-    const activeSize = document.querySelector('.product-card__size-button.active');
-    if (activeSize) {
-        document.getElementById('id_size').value = activeSize.dataset.size;
+});
+
+</script>
+{{ available_size_color_combinations|json_script:"size-color-map" }};
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    const sizeColorMap = JSON.parse(
+        document.getElementById('size-color-map').textContent
+    );
+
+    const sizeButtons = document.querySelectorAll('.product-card__size-button');
+    const colorButtons = document.querySelectorAll('.product-card__color-button');
+
+    function updateColorsForSize(selectedSizeId) {
+        const allowedColors = sizeColorMap[selectedSizeId] || [];
+
+        colorButtons.forEach(colorBtn => {
+            const colorId = parseInt(colorBtn.dataset.color);
+            if (allowedColors.includes(colorId)) {
+                colorBtn.classList.remove('disabled-color');
+            } else {
+                colorBtn.classList.add('disabled-color');
+                colorBtn.classList.remove('active');
+            }
+        });
     }
 
-    const activeColor = document.querySelector('.product-card__color-button.active');
-    if (activeColor) {
-        document.getElementById('id_color').value = activeColor.dataset.color;
+    sizeButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const selectedSizeId = btn.dataset.size;
+            sizeButtons.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            document.getElementById('id_size').value = selectedSizeId;
+
+            updateColorsForSize(selectedSizeId);
+        });
+    });
+
+    colorButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            if (btn.classList.contains('disabled-color')) return;
+
+            colorButtons.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            document.getElementById('id_color').value = btn.dataset.color;
+        });
+    });
+
+    const activeSizeBtn = document.querySelector('.product-card__size-button.active');
+    if (activeSizeBtn) {
+        const selectedSizeId = activeSizeBtn.dataset.size;
+        document.getElementById('id_size').value = selectedSizeId;
+        updateColorsForSize(selectedSizeId);
+
+        const activeColorBtn = document.querySelector('.product-card__color-button.active');
+        if (activeColorBtn && activeColorBtn.classList.contains('disabled-color')) {
+            activeColorBtn.classList.remove('active');
+        }
     }
 
+    const activeColorBtn = document.querySelector('.product-card__color-button.active');
+    if (activeColorBtn) {
+        document.getElementById('id_color').value = activeColorBtn.dataset.color;
+    }
 });
 </script>
 {% endblock %}
