@@ -29,6 +29,16 @@ class Category(models.Model):
 
     def __str__(self):
         return self.name
+    
+class Size(models.Model):
+    name = models.CharField("Название размера", max_length=20)
+
+    class Meta:
+        verbose_name = "Размер"
+        verbose_name_plural = "Размеры"
+
+    def __str__(self):
+        return self.name
 
 
 class Product(models.Model):
@@ -61,10 +71,16 @@ class ProductVariant(models.Model):
         null=True,
         verbose_name="Цвет",
     )
+
+    size = models.ForeignKey(
+        Size,
+        on_delete=models.PROTECT,
+        blank=True,
+        null=True,
+    )
     image = models.ImageField(
         "Фото товара", upload_to=product_image_path, blank=True, null=True
     )
-    size = models.CharField("Размер", max_length=20, blank=True, null=True)
     price = models.DecimalField("Цена", max_digits=10, decimal_places=2)
     price_with_discount = models.DecimalField(
         "Цена со скидкой", max_digits=10, decimal_places=2, blank=True, null=True
@@ -73,6 +89,12 @@ class ProductVariant(models.Model):
     class Meta:
         verbose_name = "Вариант товара"
         verbose_name_plural = "Варианты товара"
+        constraints = [
+            models.UniqueConstraint(
+                fields=["product", "color", "size"],
+                name="unique_product_variant",
+            )
+        ]
 
     def __str__(self):
         return f"{self.product.name} - {self.color.name if self.color else 'Цвет не указан'} - {self.size if self.size else 'Размер не указан'}"
