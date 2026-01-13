@@ -125,15 +125,18 @@ document.addEventListener('DOMContentLoaded', () => {
             btn.classList.add('active');
         });
     });
-
+    const quantityInput = document.querySelector('.product-card__quantity-input');
     document.querySelector('.plus').onclick = () => {
-        const input = document.querySelector('.product-card__quantity-input');
-        input.value = parseInt(input.value) + 1;
+        let val = parseInt(quantityInput.value);
+        if (isNaN(val) || val < 1) val = 1;
+        quantityInput.value = val + 1;
     };
 
     document.querySelector('.minus').onclick = () => {
-        const input = document.querySelector('.product-card__quantity-input');
-        if (input.value > 1) input.value--;
+        let val = parseInt(quantityInput.value);
+        if (isNaN(val) || val < 1) val = 1;
+        quantityInput.value = val - 1;
+        if (quantityInput.value < 1) quantityInput.value = 1;
     };
 });
 

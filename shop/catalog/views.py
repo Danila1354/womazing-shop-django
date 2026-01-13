@@ -78,6 +78,7 @@ def product_detail(request, product_slug):
             variant = ProductVariant.objects.get(
                 product=product, size=size, color=color
             )
+            print(form.cleaned_data,variant)
             # TODO: Add the variant to the cart
 
     return render(

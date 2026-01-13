@@ -71,7 +71,6 @@ class ProductVariant(models.Model):
         null=True,
         verbose_name="Цвет",
     )
-
     size = models.ForeignKey(
         Size,
         on_delete=models.PROTECT,
