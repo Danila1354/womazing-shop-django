@@ -4,8 +4,8 @@ from django.core.paginator import Paginator
 from django.shortcuts import get_object_or_404
 from django.db.models import Prefetch
 from .models import ProductVariant, Category, Product
-from .forms import AddToCartForm
-
+from cart.forms import AddToCartForm
+from cart.cart import Cart
 
 def catalog(request):
     categories = Category.objects.all()
@@ -71,15 +71,17 @@ def product_detail(request, product_slug):
         form = AddToCartForm(request.POST, product=product)
         if form.is_valid():
             size = form.cleaned_data["size"]
-            print(size)
             color = form.cleaned_data["color"]
             quantity = form.cleaned_data["quantity"]
 
             variant = ProductVariant.objects.get(
                 product=product, size=size, color=color
             )
-            print(form.cleaned_data,variant)
-            # TODO: Add the variant to the cart
+            cart = Cart(request)
+            cart.add(product_variant=variant, quantity=quantity)
+            for item in cart:
+                print(item)
+            
 
     return render(
         request,

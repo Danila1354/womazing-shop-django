@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'colorfield',
     'catalog',
     'pages',
+    'cart',
     'sorl.thumbnail',
     'debug_toolbar',
 ]
