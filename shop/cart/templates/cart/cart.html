@@ -61,16 +61,23 @@
             <div class="col-2 cart__price">
                 <p class="cart__price-value">${{ item.price }}</p>
             </div>
-            <div class="col-3 cart__quantity">
-                <div class="product-card__quantity-wrapper">
-                    <button class="product-card__quantity-btn product-card__quantity-btn--minus">−</button>
-                    <input type="number" class="product-card__quantity-input" value="{{ item.quantity }}" min="1">
-                    <button class="product-card__quantity-btn product-card__quantity-btn--plus">+</button>
+
+                <div class="col-3 cart__quantity">
+                    <form method="post" action="{% url 'cart:cart_update' item.product.id %}">
+                        {% csrf_token %}
+                    <div class="product-card__quantity-wrapper">
+                        <button class="product-card__quantity-btn product-card__quantity-btn--minus">−</button>
+                        <input type="number" name="quantity" class="product-card__quantity-input" value="{{ item.quantity }}" min="1">
+                        <button class="product-card__quantity-btn product-card__quantity-btn--plus">+</button>
+                    </div>
+                    <button type="submit" hidden></button>
+                    </form>
                 </div>
-            </div>
+            
             <div class="col-2 cart__total">
                 <p class="cart__total-value">${{ item.total_price }}</p>
             </div>
+            
         </div>
         {% endfor %}
         <div class="row">
@@ -100,4 +107,10 @@
         
     </div>
 </section>
+
 {% endblock content %}
+
+{% block extra_js %}
+    <script src="{% static 'js/cart_quantity_update.js' %}"></script>
+{% endblock extra_js %}
+    

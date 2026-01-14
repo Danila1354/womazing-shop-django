@@ -26,3 +26,14 @@ class AddToCartForm(forms.Form):
             self.fields["color"].queryset = Color.objects.filter(
                 product_variants__in=variants
             ).distinct()
+
+
+class UpdateCartForm(forms.Form):
+    quantity = forms.IntegerField(
+        min_value=1,
+    )
+    override = forms.BooleanField(
+        required=False,
+        initial=False,
+        widget=forms.HiddenInput,
+    )
