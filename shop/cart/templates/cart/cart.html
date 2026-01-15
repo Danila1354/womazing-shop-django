@@ -100,7 +100,7 @@
         <div class="row ">
             <div class="offset-6 col-6 summary">
                 <p class="summary__text"><span class="summary__span">Итого:</span> <span class="summary__sum">{{ cart.get_total_price }}</span></p>
-                <a href="checkout.html" class="btn shop-button summary__button">Оформить заказ</a>
+                <a href="{% url 'orders:checkout' %}" class="btn shop-button summary__button">Оформить заказ</a>
             </div>
             
         </div>

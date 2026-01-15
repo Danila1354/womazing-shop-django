@@ -45,8 +45,10 @@ INSTALLED_APPS = [
     'catalog',
     'pages',
     'cart',
+    'orders',
     'sorl.thumbnail',
     'debug_toolbar',
+    
 ]
 
 MIDDLEWARE = [
