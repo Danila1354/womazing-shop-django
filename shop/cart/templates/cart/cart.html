@@ -45,7 +45,7 @@
         {% for item in cart %}
         <div class="row cart__item">
             <div class="col-5 cart__product">
-                <button class="btn cart__product-remove-btn">×</button>
+                <a href="{% url 'cart:cart_remove' item.product.id %}" class="btn cart__product-remove-btn">×</a>
                 <a href="{% url 'catalog:product_detail' item.product.product.slug %}" class="cart__product-link">
                     {% thumbnail item.product.image "135x205" crop="center" as im %}
                         <img src="{{ im.url }}"

@@ -1,4 +1,4 @@
-from django.shortcuts import render, get_object_or_404,redirect
+from django.shortcuts import render, get_object_or_404, redirect
 
 from .cart import Cart
 from .forms import UpdateCartForm
@@ -17,4 +17,11 @@ def cart_update(request, variant_id):
     if form.is_valid():
         cart.add(product, form.cleaned_data["quantity"], True)
 
+    return redirect("cart:cart_detail")
+
+
+def cart_remove(request, variant_id):
+    cart = Cart(request)
+    product = get_object_or_404(ProductVariant, id=variant_id)
+    cart.remove(product)
     return redirect("cart:cart_detail")

@@ -1223,3 +1223,9 @@ a:hover{
     padding: 22px 50px;
     margin: 0;
 }
+
+.minus-btn-disabled{
+    pointer-events: none;
+    cursor: default;
+    opacity: 0.5 !important;
+}

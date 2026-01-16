@@ -48,7 +48,6 @@ INSTALLED_APPS = [
     'orders',
     'sorl.thumbnail',
     'debug_toolbar',
-    
 ]
 
 MIDDLEWARE = [
