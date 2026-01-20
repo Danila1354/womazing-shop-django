@@ -41,13 +41,16 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+
     'colorfield',
+    'sorl.thumbnail',
+    'debug_toolbar',
     'catalog',
     'pages',
     'cart',
     'orders',
-    'sorl.thumbnail',
-    'debug_toolbar',
+    'users'
+
 ]
 
 MIDDLEWARE = [
@@ -150,3 +153,5 @@ MEDIA_ROOT = BASE_DIR / 'media'
 INTERNAL_IPS = [
     "127.0.0.1",
 ]
+
+AUTH_USER_MODEL = 'users.CustomUser'
