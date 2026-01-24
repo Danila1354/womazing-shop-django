@@ -86,6 +86,8 @@ class ProductVariant(models.Model):
         "Цена со скидкой", max_digits=10, decimal_places=2, blank=True, null=True
     )
 
+    is_new_collection = models.BooleanField("Новинка", default=False)
+
     class Meta:
         verbose_name = "Вариант товара"
         verbose_name_plural = "Варианты товара"

@@ -20,6 +20,7 @@ class ProductVariantInline(admin.StackedInline):
         "size",
         "price",
         "price_with_discount",
+        "is_new_collection",
     )
 
     def image_preview(self, obj):

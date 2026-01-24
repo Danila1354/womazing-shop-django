@@ -31,13 +31,15 @@
 
             <div class="col-6 product-card__image-container">
                 {% if variant.image %}
-                    {% thumbnail variant.image "530x725" crop="center" as im %}
-                    <img id="product-image" src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}"
+                    {% thumbnail variant.image "1000x1500" as im %}
+                    <img id="product-image" src="{{ im.url }}" 
                         alt="{{ product.name }}"
                         class="product-card__image">
                     {% endthumbnail %}
                 {% else %}
-                    
+                    <img src="{% static 'img/placeholder.png' %}" 
+                        alt="{{ product.name }}" 
+                        class="product-card__image">
                 {% endif %}
             </div>
             <div class="col-6 product-card__info">

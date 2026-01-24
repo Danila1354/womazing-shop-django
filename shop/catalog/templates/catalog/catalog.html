@@ -39,7 +39,7 @@
                     <div class="shop-item__image-container">
                         <a href="{% url 'catalog:product_detail' product.slug %}" class="shop-item__link shop-item__link--image">
                             {% if product_variant.image %}
-                                {% thumbnail product_variant.image "400x475" crop="center" as im %}
+                                {% thumbnail product_variant.image "1000x1500" as im %}
                                     <img 
                                         src="{{ im.url }}"
                                         width="{{ im.width }}"
