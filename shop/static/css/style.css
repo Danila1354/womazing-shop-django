@@ -1233,3 +1233,15 @@ a:hover{
 .footer__nav-sublink.active{
     color: #6E9C9F;
 }
+
+.login-form{
+    display: flex;
+    justify-content: center;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.signup-link-text{
+    text-decoration: underline;
+    color: #6E9C9F;
+}

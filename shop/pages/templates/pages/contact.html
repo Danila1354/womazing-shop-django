@@ -68,7 +68,7 @@
 {% endblock content %}
 
 {% block extra_js %}
-    <script src="js/phone_mask.js"></script>
+    <script src="{% static 'js/phone_mask.js' %}" type="module"></script>
 
-    <script src="js/popup.js"></script>
+    <script src="{% static 'js/popup.js' %}" type="module"></script>
 {% endblock extra_js %}

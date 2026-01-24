@@ -19,6 +19,7 @@ from django.urls import path
 from django.urls import include
 from django.conf import settings
 from django.conf.urls.static import static
+from django.contrib.auth import views as auth_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -26,6 +27,11 @@ urlpatterns = [
     path('catalog/', include('catalog.urls')),
     path('cart/', include('cart.urls')),
     path('orders/', include('orders.urls')),
+    path('users/', include('users.users')),
+    path("login/", auth_views.LoginView.as_view(
+        template_name="registration/login.html"
+    ), name="login"),
+
 ]
 
 if settings.DEBUG:

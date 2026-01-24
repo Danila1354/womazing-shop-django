@@ -11,17 +11,15 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Overpass&family=Raleway&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
-
     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
-
 <body class="d-flex justify-content-center align-items-center vh-100 login-body">
     <div class="container">
         <form method="post" class="form login-form">
             {% csrf_token %}
 
-            <h2>Вход</h2>
+            <h2>Регистрация</h2>
 
             {% if form.non_field_errors %}
                 <div class="alert alert-danger">
@@ -31,28 +29,49 @@
 
             <div class="form-field">
                 <input type="email"
-                       name="username"
-                       class="form-input"
-                       placeholder=" "
-                       required>
+                    name="email"
+                    class="form-input"
+                    placeholder=" "
+                    required>
                 <label class="form-label">Почта</label>
+
+                {% for error in form.email.errors %}
+                    <div class="form-error">{{ error }}</div>
+                {% endfor %}
             </div>
 
             <div class="form-field">
                 <input type="password"
-                       name="password"
-                       class="form-input"
-                       placeholder=" "
-                       required>
+                    name="password1"
+                    class="form-input"
+                    placeholder=" "
+                    required>
                 <label class="form-label">Пароль</label>
+
+                {% for error in form.password1.errors %}
+                    <div class="form-error">{{ error }}</div>
+                {% endfor %}
+            </div>
+
+            <div class="form-field">
+                <input type="password"
+                    name="password2"
+                    class="form-input"
+                    placeholder=" "
+                    required>
+                <label class="form-label">Повторите пароль</label>
+
+                {% for error in form.password2.errors %}
+                    <div class="form-error">{{ error }}</div>
+                {% endfor %}
             </div>
 
             <button type="submit" class="btn shop-button login-btn">
-                Войти
+                Зарегистрироваться
             </button>
 
-            <a href="{% url 'users:register' %}" class="signup-link">
-                Нет аккаунта? <span class="signup-link-text">Зарегистрируйтесь</span>
+            <a href="/login" class="signup-link">
+                Уже есть аккаунт? <span class="signup-link-text">Войти</span>
             </a>
         </form>
     </div>
