@@ -1229,3 +1229,7 @@ a:hover{
     cursor: default;
     opacity: 0.5 !important;
 }
+
+.footer__nav-sublink.active{
+    color: #6E9C9F;
+}

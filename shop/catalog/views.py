@@ -1,4 +1,4 @@
-from django.http import Http404
+from django.http import Http404, JsonResponse
 from django.shortcuts import render
 from django.core.paginator import Paginator
 from django.shortcuts import get_object_or_404
@@ -11,6 +11,7 @@ def catalog(request):
     categories = Category.objects.all()
     products = (
         Product.objects.select_related("category")
+        .filter(variants__isnull=False)
         .prefetch_related(
             Prefetch(
                 "variants",
@@ -18,6 +19,7 @@ def catalog(request):
                 to_attr="first_variant_list",
             )
         )
+        .distinct()
         .order_by("name")
     )
     current_category = "all"
@@ -79,9 +81,6 @@ def product_detail(request, product_slug):
             )
             cart = Cart(request)
             cart.add(product_variant=variant, quantity=quantity)
-            for item in cart:
-                print(item)
-            
 
     return render(
         request,
@@ -93,3 +92,21 @@ def product_detail(request, product_slug):
             "form": form,
         },
     )
+
+
+def get_variant(request, product_id):
+    size_id = request.GET.get("size")
+    color_id = request.GET.get("color")
+
+    variant = get_object_or_404(
+        ProductVariant,
+        product_id=product_id,
+        size__id=size_id,
+        color__id=color_id
+    )
+
+    return JsonResponse({
+        "image": variant.image.url if variant.image else None,
+        "price": str(variant.price),
+        "price_with_discount": str(variant.price_with_discount) if variant.price_with_discount else None,
+    })

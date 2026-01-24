@@ -115,5 +115,5 @@ media/
 !**/migrations
 !**/migrations/__init__.py
 
-
+catalog_data.json
 shop_fixture.json

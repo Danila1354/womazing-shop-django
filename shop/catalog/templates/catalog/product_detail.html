@@ -32,7 +32,7 @@
             <div class="col-6 product-card__image-container">
                 {% if variant.image %}
                     {% thumbnail variant.image "530x725" crop="center" as im %}
-                    <img src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}"
+                    <img id="product-image" src="{{ im.url }}" width="{{ im.width }}" height="{{ im.height }}"
                         alt="{{ product.name }}"
                         class="product-card__image">
                     {% endthumbnail %}
@@ -41,7 +41,7 @@
                 {% endif %}
             </div>
             <div class="col-6 product-card__info">
-                <p class="shop-item__price product-card__price">
+                <p class="shop-item__price product-card__price" id="product-price">
                     {% if variant.price_with_discount %}
                         <span class="sale_price">${{ variant.price_with_discount }}</span>
                         <span class="standard_price small_standard_price">${{ variant.price }}</span>
@@ -203,6 +203,109 @@ document.addEventListener('DOMContentLoaded', () => {
     if (activeColorBtn) {
         document.getElementById('id_color').value = activeColorBtn.dataset.color;
     }
+});
+</script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+
+    const productId = {{ product.id }};
+    const imageEl = document.getElementById('product-image');
+    const priceEl = document.getElementById('product-price');
+
+    const sizeColorMap = JSON.parse(
+        document.getElementById('size-color-map').textContent
+    );
+
+    const sizeButtons = document.querySelectorAll('.product-card__size-button');
+    const colorButtons = document.querySelectorAll('.product-card__color-button');
+
+    function updateColorsForSize(selectedSizeId) {
+        const allowedColors = sizeColorMap[selectedSizeId] || [];
+
+        colorButtons.forEach(colorBtn => {
+            const colorId = parseInt(colorBtn.dataset.color);
+            if (allowedColors.includes(colorId)) {
+                colorBtn.classList.remove('disabled-color');
+            } else {
+                colorBtn.classList.add('disabled-color');
+                colorBtn.classList.remove('active');
+            }
+        });
+
+        const firstAvailableColor = allowedColors[0];
+        if (firstAvailableColor) {
+            document.getElementById('id_color').value = firstAvailableColor;
+            colorButtons.forEach(b => b.classList.remove('active'));
+            const btn = document.querySelector(`.product-card__color-button[data-color='${firstAvailableColor}']`);
+            if (btn) btn.classList.add('active');
+            return firstAvailableColor;
+        }
+        return null;
+    }
+
+    function loadVariant() {
+        const size = document.getElementById('id_size').value;
+        const color = document.getElementById('id_color').value;
+
+        if (!size || !color) return;
+
+        fetch(`{% url 'catalog:get_variant' product.id %}?size=${size}&color=${color}`)
+            .then(response => {
+                if (!response.ok) throw new Error("Variant not found");
+                return response.json();
+            })
+            .then(data => {
+                if (data.image && imageEl) {
+                    imageEl.src = data.image;
+                }
+
+                if (data.price_with_discount) {
+                    priceEl.innerHTML = `
+                        <span class="sale_price">$${data.price_with_discount}</span>
+                        <span class="standard_price small_standard_price">$${data.price}</span>
+                    `;
+                } else {
+                    priceEl.innerHTML = `
+                        <span class="standard_price">$${data.price}</span>
+                    `;
+                }
+            })
+            .catch(err => console.warn(err));
+    }
+
+    sizeButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            sizeButtons.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+
+            const selectedSizeId = btn.dataset.size;
+            document.getElementById('id_size').value = selectedSizeId;
+
+            const firstColor = updateColorsForSize(selectedSizeId);
+            if (firstColor) loadVariant();
+        });
+    });
+
+    colorButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            if (btn.classList.contains('disabled-color')) return;
+
+            colorButtons.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            document.getElementById('id_color').value = btn.dataset.color;
+
+            loadVariant();
+        });
+    });
+
+    const activeSizeBtn = document.querySelector('.product-card__size-button.active');
+    if (activeSizeBtn) {
+        const selectedSizeId = activeSizeBtn.dataset.size;
+        document.getElementById('id_size').value = selectedSizeId;
+        updateColorsForSize(selectedSizeId);
+        loadVariant();
+    }
+
 });
 </script>
 {% endblock %}
