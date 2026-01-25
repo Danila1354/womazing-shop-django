@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.db.models import Prefetch
 from catalog.models import ProductVariant, Product
+from .forms import ContactMessageForm
 import random
 
 
@@ -29,4 +30,12 @@ def about(request):
 
 
 def contact(request):
-    return render(request, "pages/contact.html")
+    form = ContactMessageForm()
+    success = False
+    if request.method == "POST":
+        form = ContactMessageForm(request.POST)
+        if form.is_valid():
+            form.save()
+            success = True
+            form = ContactMessageForm()
+    return render(request, "pages/contact.html", {"form": form, "success": success})

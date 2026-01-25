@@ -39,30 +39,44 @@
                 <h3 class="contacts__text-us-title">
                     Напишите нам
                 </h3>
-                <form class="contacts__form form">
+                <form method="post" class="contacts__form form">
+                {% csrf_token %}
+                {{ form.non_field_errors }}
+
                 <div class="form-field contacts__form-field">
-                    <input type="text" name="name" class="form-input" placeholder=" " required>
+                    {{ form.name.errors }}
+                    {{ form.name }}
                     <label class="form-label">Имя</label>
                 </div>
+
                 <div class="form-field contacts__form-field">
-                    <input type="email" name="email" class="form-input" placeholder=" " required>
+                    {{ form.email.errors }}
+                    {{ form.email }}
                     <label class="form-label">E-mail</label>
                 </div>
+
                 <div class="form-field contacts__form-field">
-                    <input type="tel" name="phone" class="form-input" placeholder=" " title="+7 (999) 123-45-67" required>
+                    {{ form.phone.errors }}
+                    {{ form.phone }}
                     <label class="form-label">Телефон</label>
                 </div>
+
                 <div class="form-field contacts__form-field contacts__form-field--message">
-                    <textarea name="message" class="form-input" placeholder=" " required></textarea>
+                    {{ form.message.errors }}
+                    {{ form.message }}
                     <label class="form-label">Сообщение</label>
                 </div>
+
                 <button type="submit" class="btn shop-button contacts__submit">Отправить</button>
-                </form>
-                <div class="contacts__success-message">
-                    <p class="contacts__success-text">
-                        Сообщение успешно отправлено
-                    </p>
-                </div>
+            </form>
+
+            {% if success %}
+            <div class="contacts__success-message">
+                <p class="contacts__success-text">
+                    Сообщение успешно отправлено
+                </p>
+            </div>
+            {% endif %}
             </div>
     </section>
 {% endblock content %}
