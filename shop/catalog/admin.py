@@ -1,7 +1,7 @@
 from django.contrib import admin
 from django.utils.html import format_html
 
-from .models import Color, Product, ProductVariant, Category, Size
+from .models import Color, Coupon, Product, ProductVariant, Category, Size
 
 
 @admin.register(Color)
@@ -50,4 +50,13 @@ class ProductAdmin(admin.ModelAdmin):
 @admin.register(Size)
 class SizeAdmin(admin.ModelAdmin):
     list_display = ("name",)
+
+
+@admin.register(Coupon)
+class CouponAdmin(admin.ModelAdmin):
+    list_display = ('code', 'discount_percentage', 'valid_from', 'valid_to', 'active')
+    search_fields = ('code',)
+    list_filter = ('active', 'valid_from', 'valid_to')
+    ordering = ('-valid_from',)
+
     

@@ -1,6 +1,6 @@
 from django import forms
 
-from catalog.models import ProductVariant, Color, Size
+from catalog.models import Coupon, ProductVariant, Color, Size
 
 
 class AddToCartForm(forms.Form):
@@ -37,3 +37,21 @@ class UpdateCartForm(forms.Form):
         initial=False,
         widget=forms.HiddenInput,
     )
+
+class ApplyCouponForm(forms.Form):
+    code = forms.CharField(
+        max_length=50,
+        label="Промокод",
+        widget=forms.TextInput(attrs={"placeholder": " ", "class": "form-input"}),
+    )
+    def clean_code(self):
+        code = self.cleaned_data.get("code", "").strip()
+        try:
+            coupon = Coupon.objects.get(code__iexact=code)
+        except Coupon.DoesNotExist:
+            raise forms.ValidationError("Такой купон не найден")
+
+        if not coupon.is_valid():
+            raise forms.ValidationError("Этот купон недействителен")
+
+        return coupon 

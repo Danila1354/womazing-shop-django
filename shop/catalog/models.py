@@ -1,3 +1,4 @@
+from django.utils import timezone
 from django.db import models
 
 from colorfield.fields import ColorField
@@ -100,3 +101,22 @@ class ProductVariant(models.Model):
 
     def __str__(self):
         return f"{self.product.name} - {self.color.name if self.color else 'Цвет не указан'} - {self.size if self.size else 'Размер не указан'}"
+
+
+class Coupon(models.Model):
+    code = models.CharField("Код купона", max_length=50, unique=True)
+    discount_percentage = models.PositiveIntegerField("Процент скидки")
+    active = models.BooleanField(default=True)
+    valid_from = models.DateTimeField()
+    valid_to = models.DateTimeField()
+
+    class Meta:
+        verbose_name = "Купон"
+        verbose_name_plural = "Купоны"
+
+    def __str__(self):
+        return self.code
+    
+    def is_valid(self):
+        now = timezone.now()
+        return self.active and self.valid_from <= now <= self.valid_to

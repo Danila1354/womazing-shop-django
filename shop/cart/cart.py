@@ -1,5 +1,8 @@
 from catalog.models import ProductVariant
-from decimal import Decimal
+from decimal import ROUND_HALF_UP, Decimal
+from django.shortcuts import get_object_or_404
+from catalog.models import Coupon
+from django.utils import timezone
 
 
 class Cart:
@@ -35,22 +38,52 @@ class Cart:
 
     def __iter__(self):
         product_ids = self.cart.keys()
-
-        products = ProductVariant.objects.filter(id__in=product_ids).prefetch_related(
-            "product"
-        )
+        products = ProductVariant.objects.filter(id__in=product_ids).prefetch_related("product")
+        coupon = self.get_coupon()
 
         for product in products:
             item = self.cart[str(product.id)].copy()
             item["product"] = product
-            item["price"] = Decimal(item["price"])
-            item["total_price"] = item["price"] * item["quantity"]
+            item_price = Decimal(item["price"])
+            if coupon:
+                discount_amount = (item_price * coupon.discount_percentage) / 100
+                item_price -= discount_amount
+            # округляем до 2 знаков
+            item_price = item_price.quantize(Decimal("0.01"), rounding=ROUND_HALF_UP)
+            item["price"] = item_price
+            item["total_price"] = (item_price * item["quantity"]).quantize(Decimal("0.01"), rounding=ROUND_HALF_UP)
             yield item
 
     def __len__(self):
         return sum(item["quantity"] for item in self.cart.values())
 
     def get_total_price(self):
-        return sum(
-            Decimal(item["price"]) * item["quantity"] for item in self.cart.values()
-        )
+        total = Decimal("0")
+        coupon = self.get_coupon()
+        for item in self.cart.values():
+            item_price = Decimal(item["price"])
+            if coupon:
+                item_price -= item_price * coupon.discount_percentage / 100
+            item_price = item_price.quantize(Decimal("0.01"), rounding=ROUND_HALF_UP)
+            total += item_price * item["quantity"]
+        total = total.quantize(Decimal("0.01"), rounding=ROUND_HALF_UP)
+        return total
+    
+    def get_coupon(self):
+        code = self.session.get("coupon")
+        if not code:
+            return None
+        try:
+            coupon = Coupon.objects.get(code__iexact=code)
+        except Coupon.DoesNotExist:
+            return None
+
+        if not coupon.active or not (coupon.valid_from <= timezone.now() <= coupon.valid_to):
+            return None
+
+        return coupon
+
+    def apply_coupon(self, coupon):
+        self.session['coupon'] = coupon.code
+        self.save()
+        

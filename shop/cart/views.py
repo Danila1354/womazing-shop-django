@@ -1,13 +1,14 @@
 from django.shortcuts import render, get_object_or_404, redirect
 
 from .cart import Cart
-from .forms import UpdateCartForm
+from .forms import ApplyCouponForm, UpdateCartForm
 from catalog.models import ProductVariant
 
 
 def cart_detail(request):
     cart = Cart(request)
-    return render(request, "cart/cart.html", {"cart": cart})
+    form = ApplyCouponForm()
+    return render(request, "cart/cart.html", {"cart": cart,"coupon_form": form})
 
 
 def cart_update(request, variant_id):
@@ -24,4 +25,25 @@ def cart_remove(request, variant_id):
     cart = Cart(request)
     product = get_object_or_404(ProductVariant, id=variant_id)
     cart.remove(product)
+    return redirect("cart:cart_detail")
+
+
+def apply_coupon(request):
+    cart = Cart(request)
+    if request.method == "POST":
+        form = ApplyCouponForm(request.POST)
+        if form.is_valid():
+            coupon = form.cleaned_data['code']
+            cart.apply_coupon(coupon)
+            return redirect("cart:cart_detail")
+        else:
+            return render(request, "cart/cart.html", {"cart": cart, "coupon_form": form})
+
+    return redirect("cart:cart_detail")
+
+def remove_coupon(request):
+    cart = Cart(request)
+    if 'coupon' in cart.session:
+        del cart.session['coupon']
+        cart.save()
     return redirect("cart:cart_detail")

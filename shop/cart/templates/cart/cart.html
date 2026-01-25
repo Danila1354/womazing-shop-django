@@ -82,16 +82,33 @@
         {% endfor %}
         <div class="row">
             <div class="col-6 coupon">
-                <div class="form-field m-0">
-                    <input type="text" name="coupon" class="form-input" placeholder=" " required>
-                    <label class="form-label">Введите купон</label>
-                </div>
-                <a href="#" class="btn outline-shop-button coupon__button">Применить купон</a>
+                {% if cart.get_coupon %}
+                    <div class="coupon-applied mb-2">
+                        Купон "<strong>{{ cart.get_coupon.code }}</strong>" применён 
+                        (скидка {{ cart.get_coupon.discount_percentage }}%)
+                        <form method="post" action="{% url 'cart:remove_coupon' %}" class="d-inline ms-2">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-sm btn-outline-danger">Отменить</button>
+                        </form>
+                    </div>
+                {% endif %}
+
+                <form method="post" action="{% url 'cart:apply_coupon'%}">
+                    {% csrf_token %}
+                    
+                    <div class="form-field m-0">
+                        {{ coupon_form.code }}
+                        <label class="form-label">Введите купон</label>
+                        {% if coupon_form.code.errors %}
+                            <div class="error-message">{{ coupon_form.code.errors.0 }}</div>
+                        {% endif %}
+                    </div>
+                    
+                    <button type="submit" class="ms-1 btn outline-shop-button coupon__button mt-2">
+                        Применить
+                    </button>
+                </form>
             </div>
-            <div class="col-6 update-cart">
-                <a href="#" class="btn outline-shop-button update-cart__button">Обновить корзину</a>
-            </div>
-        </div>
         <div class="row presummary">
             <div class="offset-6 col-2">
                 <p class="presummary__text">Подытог: {{ cart.get_total_price }}</p>
