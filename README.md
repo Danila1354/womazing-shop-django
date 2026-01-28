@@ -18,6 +18,9 @@
   - PostgreSQL
   - HTML / CSS / JS
   - Session-based cart
+  - **Дополнительно**
+    - django-colorfield для выбора цвета товаров
+    - sorl-thumbnail для обработки и миниатюризации изображений
   
   
 
